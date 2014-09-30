@@ -110,7 +110,9 @@
 	.profile-header-side .row .column {
 		padding-top: 20px;
 	}
-
+	.send-money-container {
+		padding-top: 20px;
+	}
 }
 
 .profile-bottom .row .column {

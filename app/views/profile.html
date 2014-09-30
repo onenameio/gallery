@@ -30,20 +30,19 @@
 
     <div class="col-md-3 header-section friends-section">
 
-      <div ng-if="!featuredFriends" class="no-friends">
-        <h4>Friends</h4>
+      <div ng-if="!user.featuredFriends" class="no-friends">
+        <!--<h4>Friends</h4>
         <p>
           <i>(user isn't following anyone who is following them back)</i>
-        </p>
+        </p>-->
       </div>
 
-      <div ng-if="featuredFriends">
+      <div ng-if="user.featuredFriends">
         <h4>Friends</h4>
         <div class="friend-item-container">
           <div class="friend-item" ng-repeat="friend in user.featuredFriends">
-            <a href="#">
-              <div class="avatar-container square-container-100">
-                <img ng-src="{{ friend.avatarUrl }}">
+            <a href="#/{{ friend.username }}">
+              <div class="avatar-container square-container-100" id="friend-avatar-{{ $index }}">
                 <div class="username-section">
                   <div class="username thick-text">{{ friend.username }}</div>
                 </div>
@@ -52,7 +51,7 @@
           </div>
         </div>
 
-        <p ng-if="unfeaturedFriendCount">
+        <p ng-if="user.unfeaturedFriendCount">
           <a href="#" class="btn btn-black">and {{ user.unfeaturedFriendCount }} more...</a>
         </p>
 
@@ -112,7 +111,9 @@
 
       <div class="row" ng-if="user.payments">
         <div class="col-md-12">
-          <a href="#" type="button" class="btn btn-success btn-lg btn-block">Send Money</a>
+          <div class="send-money-container">
+            <a href="#" type="button" class="btn btn-success btn-lg btn-block">Send Money</a>
+          </div>
         </div>
       </div>
 
