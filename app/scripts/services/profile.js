@@ -28,6 +28,20 @@ angular.module('profileviewerApp')
 		;
 	};
 
+	Person.search = function(query, onSuccess, onError) {
+		/* Cover the empty query case */
+		if (!query) { return; }
+		if (query.length === 0) {
+			onSuccess({'results': []});
+			return;
+		}
+		/* Perform the search */
+		var url = 'http://onenameapi.herokuapp.com/search?query=' + query;
+		$http({method: 'GET', url: url})
+			.success(function(data) { onSuccess(data); })
+			.error(function(data) { onError(data); });
+	};
+
 	return Person;
 }])
 ;

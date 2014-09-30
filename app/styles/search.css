@@ -1,0 +1,124 @@
+.item-search {
+}
+
+.item-search .typeahead {
+  position: relative;
+  z-index: 1000;
+}
+
+.item-search .search-icon {
+  font-size: 22px;
+  position: absolute;
+  color: #ccc;
+  top: 18px;
+  left: 14px;
+}
+
+.item-search input[type=text] {
+  font-size: 28px;
+  height: 58px;
+
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+
+  padding-left: 45px;
+  border: 0 none;
+
+  border: 2px solid #CCC;
+}
+.item-search input[type=text]:focus {
+  outline: none;
+}
+
+.item-search .menu {
+  margin-bottom: 70px;
+  padding: 0;
+  border: 2px solid #CCC;
+  border-top: none;
+}
+.item-search .menu, .item-search .menu ul {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+
+  -webkit-border-top-left-radius: 0px;
+  -moz-border-top-left-radius: 0px;
+  border-top-left-radius: 0px;
+
+  -webkit-border-top-right-radius: 0px;
+  -moz-border-top-right-radius: 0px;
+  border-top-right-radius: 0px;
+
+    background-color: white;
+}
+
+.item-search .person-results {
+  width: 100px;
+  font-weight: 300;
+  color: rgb(187, 187, 187);
+  float: left;
+  text-align: center;
+}
+
+.item-search .person {
+  font-size: 13px !important;
+  margin: 0;
+}
+
+.item-search ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item-search .person {
+  text-align: left;
+  padding: 5px;
+  position: relative;
+}
+.item-search .person a {
+  color: black;
+}
+
+.item-search .person.active {
+  background-color: #444;
+}
+
+.item-search .person div {
+  display: inline-block;
+  word-wrap: break-word;
+}
+.item-search .person .name {
+  font-weight: bold;
+}
+
+.item-search .person.active .username, .item-search .person.active .name {
+  color: white;
+}
+.item-search .person .details {
+  word-wrap: normal;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.item-search .person .twitter {
+  color: #55acee;
+}
+.item-search .person.active .twitter {
+  color: #B2D4ED;
+}
+.item-search .person .github {
+  color: #614381;
+}
+.item-search .person.active .github {
+  color: #A38DBA;
+}
+.item-search .person .facebook {
+  color: #374D8C;
+}
+.item-search .person.active .facebook {
+  color: #8D9CC4;
+}
+.item-search .person.active .website {
+  color: #AAA;
+}
