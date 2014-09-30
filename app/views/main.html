@@ -12,7 +12,7 @@
                     <div class="menu container-fluid" ng-if="people">
                         <ul>
                             <li typeahead-item="person" ng-repeat="person in people" class="person row">
-                                <a href="#/{{ person.username }}">
+                                <a href="/{{ person.username }}">
                                     <div class="username col-xs-3">
                                         <span>+{{ person.username }}</span>
                                     </div>

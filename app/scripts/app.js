@@ -15,8 +15,10 @@ angular
     'ngResource',
     'ngRoute',
   ])
-  .config(function ($compileProvider, $routeProvider) {
+  .config(function ($compileProvider, $locationProvider, $routeProvider) {
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|file|tel|bitcoin|skype|mailto|callto|bitmsg):/);
+
+    $locationProvider.html5Mode(true).hashPrefix('!');
 
     $routeProvider
       .when('/', {
