@@ -1,4 +1,5 @@
 .item-search {
+  placeholder-color: #CCC;
 }
 
 .item-search .typeahead {
@@ -12,6 +13,21 @@
   color: #ccc;
   top: 18px;
   left: 14px;
+}
+
+.item-search ::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #CCC;
+}
+.item-search :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #CCC;
+   opacity:  1;
+}
+.item-search ::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #CCC;
+   opacity:  1;
+}
+.item-search :-ms-input-placeholder { /* Internet Explorer 10+ */
+   color:    #CCC;
 }
 
 .item-search input[type=text] {

@@ -88,7 +88,6 @@ angular.module('profileviewerApp')
         if (friendAvatarUrl) {
           var featuredFriend = { username: key, avatarUrl: friendAvatarUrl };
           featuredFriends.push(featuredFriend);
-          $scope.loadAvatar(featuredFriend.avatarUrl, 'friend-avatar-' + i);
           i = i + 1;
           unfeaturedFriendCount = unfeaturedFriendCount - 1;
           if (i >= numFeatured) {
@@ -142,7 +141,20 @@ angular.module('profileviewerApp')
 
     $scope.loadAvatar($scope.user.avatarUrl, 'user-avatar-container');
     $scope.loadBackground($scope.user.backgroundUrl, 'profile-bottom');
-  });
 
-  $scope.sampleUser = Samples.user;
+    for (var j = 0; j < $scope.user.featuredFriends.length; j++) {
+      $scope.loadAvatar($scope.user.featuredFriends[j].avatarUrl, 'friend-avatar-' + j);
+    }
+  }, function() {
+    if ($routeParams.username === 'ryansheasample') {
+
+      $scope.user = Samples.user();
+      $scope.loadAvatar($scope.user.avatarUrl, 'user-avatar-container');
+      $scope.loadBackground($scope.user.backgroundUrl, 'profile-bottom');
+      
+      for (var i = 0; i < $scope.user.featuredFriends.length; i++) {
+        $scope.loadAvatar($scope.user.featuredFriends[i].avatarUrl, 'friend-avatar-' + i);
+      }
+    }
+  });
 });
