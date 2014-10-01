@@ -32,6 +32,7 @@ angular.module('profileviewerApp')
             unfeaturedFriendCount: 24,
             shortPgpFingerprint: 'A93E A312',
             shortOtrFingerprint: '756C E84F',
+            payments: [{ type: 'bitcoin', identifier: '14eautXfJT7EZsKfm1eHSAPnHkn3w1XF9R' }],
             profiles: [
               { type: 'twitter', iconClass: 'fa-twitter', username: 'ryaneshea',
                 url: 'https://twitter.com/ryaneshea',
