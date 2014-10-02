@@ -102,11 +102,11 @@ hr {
   color: #ffffff;
 }
 
-.btn-primary, .btn-primary:hover,
-.btn-warning, .btn-warning:hover,
-.btn-danger, .btn-danger:hover,
-.btn-success, .btn-success:hover,
-.btn-black, .btn-black:hover {
+.btn-primary, .btn-primary:hover, .btn-primary:hover,
+.btn-warning, .btn-warning:hover, .btn-warning:hover,
+.btn-danger, .btn-danger:hover, .btn-danger:hover,
+.btn-success, .btn-success:hover, .btn-success:visited,
+.btn-black, .btn-black:hover, .btn-black:visited {
   color: white;
 }
 
@@ -178,8 +178,6 @@ hr {
   width: 100%;
   padding-top: 50px;
   padding-bottom: 250px;
-  background: url(../img/water-horizon.jpg) no-repeat;
-  -webkit-background-size: cover;
 }
 
 #hello h1 {

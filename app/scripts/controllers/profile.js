@@ -12,17 +12,19 @@ angular.module('profileviewerApp')
 .controller('ProfileCtrl', function ($scope, $routeParams, Utils, Person, Samples) {
   $scope.user = {};
 
+  $scope.avatarSize = 200;
+  $scope.friendAvatarSize = 100;
+
   var hasProp = Utils.hasProp;
   var getProp = Utils.getProp;
 
-  $scope.loadAvatar = function(avatarUrl, elementId) {
+  $scope.loadAvatar = function(avatarUrl, elementId, diameter) {
     var img = new Image();
         img.onload = function() {
           document.getElementById(elementId).appendChild(img);
           if (img.height < img.width) {
             img.style.height = '100%';
             img.style.width = 'auto';
-            var diameter = 200;
             var marginLeft = -((diameter/img.height)*img.width - diameter)/2;
             img.style.marginLeft = marginLeft.toString() + 'px';
           }
@@ -139,21 +141,21 @@ angular.module('profileviewerApp')
       payments: payments,
     };
 
-    $scope.loadAvatar($scope.user.avatarUrl, 'user-avatar-container');
+    $scope.loadAvatar($scope.user.avatarUrl, 'user-avatar-container', $scope.avatarSize);
     $scope.loadBackground($scope.user.backgroundUrl, 'profile-bottom');
 
     for (var j = 0; j < $scope.user.featuredFriends.length; j++) {
-      $scope.loadAvatar($scope.user.featuredFriends[j].avatarUrl, 'friend-avatar-' + j);
+      $scope.loadAvatar($scope.user.featuredFriends[j].avatarUrl, 'friend-avatar-' + j, $scope.friendAvatarSize);
     }
   }, function() {
     if ($routeParams.username === 'ryansheasample') {
 
       $scope.user = Samples.user();
-      $scope.loadAvatar($scope.user.avatarUrl, 'user-avatar-container');
+      $scope.loadAvatar($scope.user.avatarUrl, 'user-avatar-container', $scope.avatarSize);
       $scope.loadBackground($scope.user.backgroundUrl, 'profile-bottom');
       
       for (var i = 0; i < $scope.user.featuredFriends.length; i++) {
-        $scope.loadAvatar($scope.user.featuredFriends[i].avatarUrl, 'friend-avatar-' + i);
+        $scope.loadAvatar($scope.user.featuredFriends[i].avatarUrl, 'friend-avatar-' + i, $scope.friendAvatarSize);
       }
     }
   });

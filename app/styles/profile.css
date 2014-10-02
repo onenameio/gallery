@@ -1,3 +1,7 @@
+p {
+	line-height: 22px;
+}
+
 .profile-bottom a {
   color: white;
 }
@@ -34,6 +38,7 @@
 	position: relative;
 	margin: 0px auto;
 	z-index: 10;
+	overflow: hidden;
 }
 .avatar-container img {
   width: 100%;
@@ -236,17 +241,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#444444', end
 }
 
 .avatar-border {
-	width: 212px;
-	height: 212px;
+	width: 214px;
+	height: 214px;
 	position: absolute;
-	top: -6px;
+	top: -7px;
 	left: 50%;
-	margin-left: -106px;
+	margin-left: -107px;
 	z-index: 1;
-	border: 3px solid #444;
-	-webkit-border-radius: 212px;
-	-moz-border-radius: 212px;
-	border-radius: 212px;
+	border: 4px solid #444;
+	-webkit-border-radius: 214px;
+	-moz-border-radius: 214px;
+	border-radius: 214px;
 }
 
 .follow-button-container {
