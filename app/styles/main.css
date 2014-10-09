@@ -1,15 +1,13 @@
 /* FONTS */
-@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow|Montserrat|Oswald|Roboto+Condensed);
+@import url(http://fonts.googleapis.com/css?family=Montserrat|Source+Sans+Pro|Open+Sans|PT+Sans);
 
 /* OVERALL ASPECT */
 
 body {
   background-color: white;
-  font-family: 'Open Sans', sans-serif;
-  //font-weight: 300;
   font-size: 16px;
-  color: #555;
-
+  color: #444;
+  font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -webkit-overflow-scrolling: touch;
   
@@ -17,19 +15,19 @@ body {
 }
 
 /* Titles */
-h1, h2, h3, h4, h5, h6, .navbar-brand {
-  font-family: 'Roboto Condensed', sans-serif;
-  color: #333;
-}
-
-.thick-text {
-  
+.thick-text {  
   font-weight: bold;
 }
 
 h1 {
+  font-family: 'Montserrat', sans-serif;
 }
-h2, h3, h4, h5, h6 {
+h2, h3, h4, h5, h6, div, .navbar-brand {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.navbar .form-group {
+  margin-bottom: 0;
 }
 
 .row {
@@ -38,7 +36,7 @@ h2, h3, h4, h5, h6 {
 }
 
 /* Paragraph & Typographic */
-p, ol, ul {
+p.super, ol.super, ul.super {
   line-height: 28px;
   margin-bottom: 25px;
 }
@@ -119,6 +117,12 @@ hr {
 .btn-bare:hover {
   color: #444;
 }
+.btn-black {
+  background-color: #555;
+}
+.btn-black:hover {
+  background-color: #222;
+}
 
 /*.btn-primary {
   background-color: #5E7289;
@@ -148,13 +152,6 @@ hr {
   background-color: #B0675C;
 }*/
 
-.btn-black {
-  background-color: #555;
-}
-.btn-black:hover {
-  background-color: #222;
-}
-
 .btn {
   border-radius: 0px;
   margin-bottom: 0;
@@ -173,26 +170,28 @@ hr {
 
 /* WRAP SECTIONS */
 
-/* hello */
-#hello {
+.wrap-section {
+  padding-bottom: 100px;
+  padding-top: 50px;
+}
+.wrap-section h1 {
+  padding-bottom: 20px;
+}
+.top-section {
   width: 100%;
   padding-top: 50px;
-  padding-bottom: 250px;
+  padding-bottom: 100px;
 }
 
-#hello h1 {
-  font-size: 90px;
-  font-weight: 400;
-  letter-spacing: 3px;
-}
+/* hello */
 
-#hello h2 {
-  font-weight: 400;
+.top-section h1 {
+  font-size: 72px;
 }
 
 /* overview */
 #overview {
-  background-color: #7C91B3;
+  background-color: #444;
   padding-top: 80px;
   margin-bottom: 0px;
   padding-bottom: 100px;
@@ -210,17 +209,18 @@ hr {
   font-size: 20px;
 }
 
-#opendig {
-  background-color: white;
-  padding-bottom: 90px;
-  padding-top: 50px;
-}
-
 /* schema */
-#schema {
+.white-section {
+  background-color: white;
+  color: #444;
+}
+.blue-section {
   background-color: #7C91B3;
-  padding-top: 80px;
-  padding-bottom: 80px;
+  color: white;
+}
+.gray-section {
+  background-color: #444;
+  color: white;
 }
 
 #schema h3 {
@@ -254,15 +254,14 @@ hr {
 }
 
 /* Footer */
-#f {
+.bottom-section {
   padding-top: 20px;
-  background-color: #7C91B3;
+  padding-bottom: 20px;
+  background-color: #444;
 }
 
-#f p {
+.bottom-section div {
   color: white;
-  text-align: right;
-  font-weight: 300;
 }
 
 /* Image Opacity */
@@ -276,3 +275,28 @@ hr {
 .light-header {
   color: white;
 }
+
+.btn-200 {
+  width: 200px;
+}
+
+.table {
+  display: table;   /* Allow the centering to work */
+  margin: 0 auto;
+
+}
+
+ul#horizontal-list {
+  list-style: none;
+  padding-left: 0px;
+  text-align: center;
+}
+ul#horizontal-list li {
+  display: inline-block;
+  margin: 5px;
+}
+
+.horizontal-friend-item {
+
+}
+

@@ -1,14 +1,15 @@
 
 <div class="profile-header">
-<div class="container-fluid">
+<div class="container">
   <div class="row">
 
     <div class="col-md-3 header-section">
+      <hr>
       <div id="user-avatar-container" class="avatar-container circle-container-lg">
 
       </div>
-      <div class="avatar-border">
-      </div>
+      <!--<div class="avatar-border">
+      </div>-->
       <div class="follow-button-container">
         <a href="#" type="button" class="btn btn-black" style="width: 200px; margin: auto;">Follow</a>
       </div>
@@ -40,11 +41,11 @@
       <div ng-if="user.featuredFriends">
         <h4>Followers</h4>
         <div class="friend-item-container">
-          <div class="friend-item" ng-repeat="friend in user.featuredFriends">
+          <div class="friend-item grouped-friend-item" ng-repeat="friend in user.featuredFriends">
             <a href="/{{ friend.username }}">
               <div class="avatar-container square-container-100" id="friend-avatar-{{ $index }}">
                 <div class="username-section">
-                  <div class="username thick-text">{{ friend.username }}</div>
+                  <div class="username">{{ friend.username }}</div>
                 </div>
               </div>
             </a>
@@ -83,7 +84,7 @@
           
           <div ng-if="user.shortPgpFingerprint">
             <a href="#" type="button" class="btn btn-bare btn-block" >
-              <p>
+              <p class="super">
                 <span class="pull-left">
                   <i class="fa fa-key"></i> PGP
                 </span>
@@ -95,7 +96,7 @@
           
           <div ng-if="user.shortOtrFingerprint">
             <a href="#" type="button" class="btn btn-bare btn-block">
-              <p>
+              <p class="super">
                 <span class="pull-left">
                   <i class="fa fa-key"></i> OTR
                 </span>
@@ -129,16 +130,16 @@
 
     <div class="col-md-3 column" ng-repeat="profile in user.profiles">
       <div class="profile-box {{ profile.type }}">
-        <p>
-          <a href="{{ profile.url }}" class="profile pull-left" target="_blank">
+        <div class="profile-inner-box">
+          <a href="{{ profile.proofUrl }}" class="profile pull-left" target="_blank">
             <i class="fa {{ profile.iconClass }} fa-2"></i>
             <span class="username">{{ profile.username }}</span>
           </a>
-          <a href="{{ profile.proofUrl }}" class="proof pull-right" target="_blank">
-            <!--<i class="fa fa-certificate fa-2"></i>
-            proof-->
-          </a>
-        </p>
+          <!--<a href="{{ profile.proofUrl }}" class="proof pull-right" target="_blank">
+            <i class="fa fa-certificate fa-2"></i>
+            proof
+          </a>-->
+        </div>
       </div>
     </div>
 

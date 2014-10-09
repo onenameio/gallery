@@ -1,1 +1,42 @@
-<p>This is the about view.</p>
+<div class="top-section gray-section"> <div class="container"> <div class="row"> <div class="col-lg-10 col-lg-offset-1 centered"> <h1>Openname for Devs</h1> <h2>The Developer's Guide to the Openname System</h2> </div> </div> </div> </div><!-- /hello --> <div class="wrap-section white-section"> <div class="container"> <div class="row mt grid"> <div class="col-lg-8 col-lg-offset-2"> <h2>OPENDIG</h2> <p> Opendig is a command line tool that extends the functionality of dig to support the resolution of user handles registered on the blockchain. </p> <h4>Installation:</h4> <pre><code class="language-css">>>> sudo pip install opendig
+</code></pre> <h4>Domains:</h4> <pre><code class="language-css">$ opendig -d angel.co
+
+angel.co. 59 IN A 50.18.171.72
+angel.co. 21599 IN NS ns-1437.awsdns-51.org.
+angel.co. 21599 IN NS ns-1845.awsdns-38.co.uk.
+angel.co. 21599 IN NS ns-193.awsdns-24.com.
+angel.co. 21599 IN NS ns-634.awsdns-15.net.
+...</code></pre> <h4>User Data:</h4> <pre><code class="language-css">$ opendig -u naval
+
+{
+    "name": {
+        "formatted": "Naval Ravikant"
+    },
+    "website": "https://angel.co/naval",
+    "bitcoin": {
+        "address": "1919UrhYyhs471ps8CFcJ3DRpWSda8qtSk"
+    },
+    ...
+    }
+}</code></pre> <h4>Bitcoin User Data:</h4> <pre><code class="language-css">$ opendig bitcoin -u naval
+
+{
+        "address": "1919UrhYyhs471ps8CFcJ3DRpWSda8qtSk"
+}</code></pre> <p> <a href="https://github.com/opennamesystem/opendig" type="button" class="btn btn-black btn-lg">opendig on github</a> </p> </div> <!--<div class="col-lg-5 centered">
+					<img src="assets/img/04.jpg" alt="">
+				</div>--> </div> </div> </div> <div class="wrap-section blue-section"> <div class="container"> <div class="row"> <div class="col-lg-8 col-lg-offset-2"> <h2 class="light-header">USER SCHEMA</h2> </div> </div><!-- /row --> <div class="row"> <div class="col-lg-8 col-lg-offset-2"> <p class=""> User calls to opendig will return user data in a standard schema - today most of the data is in what is known as userschema v0.2, but a new standard v0.3 is in the RFC phase. After sufficient people have reviewed, commented on, and revised the v0.3 schema, a rollout will begin. </p> <h3 class="">v0.2</h3> <pre><code class="language-css">{
+    "name": {
+        "formatted": "Barry Silbert"
+    },
+    "bitcoin": {
+        "address": "1N9rsxZimC8z8SRfocEh9pAa5RweBa76st"
+    },
+    "twitter": {
+        "username": "barrysilbert",
+        "proof": {
+            "url": "https://twitter.com/barrysilbert/status/486629628618891264"
+        }
+    },
+    ...
+    "v": "0.2",
+}</code></pre> <p> <a href="https://github.com/opennamesystem/openspecs" type="button" class="btn btn-black btn-lg">schema on github</a> </p> </div> </div> </div><!-- /container --> </div><!-- /schema --> <div class="bottom-section"> <div class="container"> <div class="row"> <div class="pull-right"> &copy; the openname system - Distributed under the MIT License </div> </div> </div> </div>

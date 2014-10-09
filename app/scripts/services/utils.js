@@ -22,6 +22,19 @@ angular.module('profileviewerApp')
 	    }
 	    return null;
 	};
+	Utils.loadAvatar = function(avatarUrl, elementId, diameter) {
+		var img = new Image();
+		img.onload = function() {
+			document.getElementById(elementId).appendChild(img);
+			if (img.height < img.width) {
+				img.style.height = '100%';
+				img.style.width = 'auto';
+				var marginLeft = -((diameter/img.height)*img.width - diameter)/2;
+				img.style.marginLeft = marginLeft.toString() + 'px';
+			}
+		};
+		img.src = avatarUrl;
+	};
 	return Utils;
 }])
 ;

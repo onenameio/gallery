@@ -158,6 +158,9 @@ p {
 	max-width: 65%;
 	text-align: left;
 }
+.profile-inner-box {
+	margin-bottom: 20px;
+}
 
 
 .profile-box.facebook {
@@ -293,7 +296,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#444444', end
 	display: table;
 	margin-bottom: 10px;
 }
-.friend-item {
+.grouped-friend-item {
 	margin: 0px 5px 5px 0px;
 	display: inline-block;
 	float: left;

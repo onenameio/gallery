@@ -1,3 +1,7 @@
+.navbar .item-search {
+  margin-top: 5px;
+}
+
 .item-search {
   placeholder-color: #CCC;
 }
@@ -8,11 +12,10 @@
 }
 
 .item-search .search-icon {
-  font-size: 22px;
   position: absolute;
   color: #ccc;
-  top: 18px;
-  left: 14px;
+  top: 10px;
+  left: 10px;
 }
 
 .item-search ::-webkit-input-placeholder { /* WebKit browsers */
@@ -31,8 +34,7 @@
 }
 
 .item-search input[type=text] {
-  font-size: 28px;
-  height: 58px;
+  height: 36px;
 
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;

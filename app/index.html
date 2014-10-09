@@ -26,7 +26,7 @@
     <!-- Add your site or application content here -->
 
     <!-- Fixed navbar -->
-    <div class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar navbar-default navbar-fixed-top" ng-controller="NavbarCtrl">
 
       <div class="container-fluid">
         <div class="navbar-header">
@@ -36,10 +36,12 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="/">
-            Openname
+            <img src="/images/logo.png" style="max-width: 180px; margin-top: -10px;">
           </a>
         </div>
         <div class="navbar-collapse collapse">
+          <div ng-include="'/views/_navbar_search.html'"></div>
+
           <ul class="nav navbar-nav navbar-right">
             <li>
               <a href="https://onename.io">SIGN UP</a>
@@ -49,7 +51,7 @@
       </div>
     </div>
 
-    <div ng-view=""></div>
+    <div ng-view="" autoscroll="true"></div>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -82,6 +84,7 @@
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -95,6 +98,7 @@
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/about.js"></script>
     <script src="scripts/controllers/profile.js"></script>
+    <script src="scripts/controllers/navbar.js"></script>
     <!-- endbuild -->
 </body>
 </html>

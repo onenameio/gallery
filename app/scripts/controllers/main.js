@@ -15,40 +15,18 @@ angular.module('profileviewerApp')
       'Karma'
     ];
 
-    var hasProp = Utils.hasProp;
+    $scope.featuredFriends = [
+      { username: 'gavin', avatarUrl: 'https://s3.amazonaws.com/kd4/gavin' },
+      { username: 'albertwenger', avatarUrl: 'https://pbs.twimg.com/profile_images/1773890030/aew_artistic_bigger.gif' },
+      { username: 'fredwilson', avatarUrl: 'https://s3.amazonaws.com/65m/fredwilson-avatar.jpg' },
+      { username: 'muneeb', avatarUrl: 'https://s3.amazonaws.com/kd4/muneeb' },
+      { username: 'naval', avatarUrl: 'https://pbs.twimg.com/profile_images/3696617328/667874c5936764d93d56ccc76a2bcc13.jpeg' },
+      { username: 'arianna', avatarUrl: 'https://s3.amazonaws.com/97p/ariannas-profile.jpg' },
+      { username: 'ryanshea', avatarUrl: 'https://s3.amazonaws.com/97p/tux.jpg' },      
+    ];
 
-    $scope.search = function(query) {
-		Person.search(query, function(resp) {
-			var people = [];
-			if (resp.results) {
-				resp.results.map(function(item) {
-					var hasIdentifier = false,
-						hasName = false,
-						hasVerification = false;
-					if (hasProp(item, 'profile', 'twitter', 'username') ||
-						hasProp(item, 'profile', 'github', 'username') ||
-						hasProp(item, 'profile', 'facebook', 'username')) {
-						hasIdentifier = true;
-					}
-					if ($scope.website) {
-						hasIdentifier = true;
-					}
-					if (hasProp(item, 'profile', 'twitter', 'proof', 'url') ||
-						hasProp(item, 'profile', 'github', 'proof', 'url') ||
-						hasProp(item, 'profile', 'facebook', 'proof', 'url')) {
-						hasVerification = true;
-					}
-					if (hasProp(item, 'profile', 'name', 'formatted')) {
-						hasName = true;
-					}
-					if (item.username && hasName && hasIdentifier) {
-						people.push(item);
-					}
-				});
-			}
-			$scope.people = people;
-		}, function(error) {
-			console.log(error);
-		});
-	};
+    for (var j = 0; j < $scope.featuredFriends.length; j++) {
+      Utils.loadAvatar($scope.featuredFriends[j].avatarUrl, 'friend-avatar-' + j, 100);
+    }
+
   });
