@@ -1,0 +1,38 @@
+<div class="modal-header">
+    <h3 class="modal-title">Public Key</h3>
+</div>
+<div class="modal-body">
+
+	<div class="pgp-fingerprint-row row" ng-if="profile.pgp.fingerprint">
+      <div class="col-sm-3">
+        fingerprint:
+      </div>
+      <div class="col-sm-9 pgp-fingerprint">
+        <span ng-repeat="chunk in profile.pgp.fingerprint | pgpFingerprintChunks" class="pgp-chunk">
+          {{ chunk }}
+        </span>
+      </div>
+    </div>
+    <div class="pgp-fingerprint-row row" ng-if="profile.pgp.fingerprint">
+      <div class="col-sm-3">
+        64-bit fingerprint:
+      </div>
+      <div class="col-sm-9 pgp-fingerprint">
+        <span ng-repeat="chunk in profile.pgp.fingerprint | pgpFingerprintChunks : 16 track by $index" class="pgp-chunk">
+          {{ chunk }}
+        </span>
+      </div>
+    </div>
+    <div class="pgp-fingerprint-row row" ng-if="profile.pgp.url">
+    	<div class="col-sm-12" style="text-align: center;">
+    		<a ng-href="{{ profile.pgp.url }}" target="_blank">{{ profile.pgp.url }}</a>
+    	</div>
+    </div>
+
+    <div class="pgp-key row">
+      <div class="col-sm-12">
+        <textarea rows="10" class="form-control selectable-textarea centered-text" id="pgpkey-textarea" spellcheck="false" select-on-click>{{ profile.pgp.publickey }}</textarea>
+      </div>
+    </div>
+
+</div>

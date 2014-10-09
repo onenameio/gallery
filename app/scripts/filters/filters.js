@@ -58,4 +58,19 @@ angular.module('profileviewerApp')
     return null;
   };
 })
+.filter('pgpFingerprintChunks', function() {
+  function replaceAll(find, replace, str) {
+    return str.replace(new RegExp(find, 'g'), replace);
+  }
+
+  return function(input, trim) {
+    if (input) {
+      input = replaceAll(' ', '', input);
+      if (input.length > trim) {
+        input = input.substr(input.length - trim);
+      }
+      return input.match(/.{1,4}/g);
+    }
+  };
+})
 ;

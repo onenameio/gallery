@@ -129,7 +129,8 @@ hr {
 }
 
 .btn-default {
-  background-color: #CCC;
+  background-color: #fff;
+  border: 1px solid #ccc !important;
 }
 input[type=text] {
   -webkit-border-radius: 0px;
@@ -307,3 +308,14 @@ ul.horizontal-list li {
   display: inline-block;
   margin: 5px;
 }
+
+.sm-push {
+  margin-bottom: 10px;
+}
+.md-push {
+  margin-bottom: 20px;
+}
+.lg-push {
+  margin-bottom: 40px;
+}
+

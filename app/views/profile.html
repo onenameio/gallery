@@ -78,31 +78,26 @@
       <!-- END CONTACT ITEMS -->
 
       <!-- KEYCHAIN ITEMS -->
-      <div class="row">
+      <div class="row" ng-if="user.keychain">
         <div class="col-md-12">
-          
-          <div ng-if="user.shortPgpFingerprint" class="key-link">
-              <a href="#" type="button" class="btn btn-bare btn-block" >
+          <div ng-repeat="key in user.keychain | limitTo:2" class="key-link">
+              <a href="#" type="button" class="btn btn-bare btn-block" ng-if="key.type">
                   <span class="pull-left">
-                    <i class="fa fa-key"></i> PGP
+                    <i class="fa fa-key"></i>
+                    <span>{{ key.type }}</span>
                   </span>
-                  <span class="pull-right">{{ user.shortPgpFingerprint }}</span>
+                  <span class="pull-right">
+                    <span ng-repeat="chunk in key.fingerprint | pgpFingerprintChunks : 8 track by $index" class="pgp-chunk">
+                    {{ chunk }}
+                    </span>
+                  </span>
               </a>
           </div>
-          
-          <div ng-if="user.shortOtrFingerprint" class="key-link">
-              <a href="#" type="button" class="btn btn-bare btn-block">
-                  <span class="pull-left">
-                    <i class="fa fa-key"></i> OTR
-                  </span>
-                  <span class="pull-right">{{ user.shortOtrFingerprint }}</span>
-              </a>
-          </div>
-          
         </div>
       </div>
       <!-- END KEYCHAIN ITEMS -->
 
+      <!-- PAYMENT ITEMS -->
       <div class="row" ng-if="user.payments">
         <div class="col-md-12">
           <div class="send-money-container">
@@ -110,6 +105,7 @@
           </div>
         </div>
       </div>
+      <!-- END PAYMENT ITEMS -->
 
     </div>
 
@@ -138,7 +134,7 @@
 
     <div class="col-md-3 column" ng-repeat="profile in user.websites">
       <div class="profile-box {{ profile.type }}">
-        <p>
+        <div class="profile-inner-box">
           <a href="{{ profile.url }}" class="profile pull-left" target="_blank">
             <i class="fa {{ profile.iconClass }} fa-2"></i>
             <span class="username">{{ profile.username }}</span>
@@ -147,7 +143,7 @@
             <!--<i class="fa fa-certificate fa-2"></i>
             proof-->
           </a>
-        </p>
+        </div>
       </div>
     </div>
   </div>

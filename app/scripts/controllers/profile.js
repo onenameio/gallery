@@ -19,9 +19,9 @@ angular.module('profileviewerApp')
   var getProp = Utils.getProp;
 
   Person.findByUsername($routeParams.username, function(data) {
-    var profiles = [], payments = [], featuredFriends = [], websites = [],
-      profile = null, avatarUrl = null, backgroundUrl = null, bitcoinAddress = null,
-      pgpPrint = null, otrPrint = null, unfeaturedFriendCount = 0, name = null, location = null;
+    var profiles = [], payments = [], featuredFriends = [], websites = [], keychain = [],
+      profile = null, avatarUrl = null, backgroundUrl = null,
+      unfeaturedFriendCount = 0, name = null, location = null;
 
     if (hasProp(data, 'twitter', 'username') && hasProp(data, 'twitter', 'proof', 'url')) {
       profile = { type: 'twitter', iconClass:'fa-twitter',
@@ -74,8 +74,11 @@ angular.module('profileviewerApp')
     }
     
     if (hasProp(data, 'pgp', 'fingerprint')) {
-        pgpPrint = data.pgp.fingerprint;
-        pgpPrint = pgpPrint.slice(pgpPrint.length-8,pgpPrint.length).match(/.{1,4}/g).join(' ');
+      var publicKey = { type: 'pgp', fingerprint: data.pgp.fingerprint };
+      if (hasProp(data, 'pgp', 'url')) {
+        publicKey.value = data.pgp.url;
+      }
+      keychain.push(publicKey);
     }
 
     if (hasProp(data, 'avatar', 'url')) {
@@ -99,12 +102,6 @@ angular.module('profileviewerApp')
       location = data.location;
     }
 
-    for (var paymentIndex in payments) {
-      if (payments[paymentIndex].type === 'bitcoin') {
-        bitcoinAddress = payments[paymentIndex].identifier;
-      }
-    }
-
     $scope.user = {
       username: $routeParams.username,
       name: name,
@@ -114,12 +111,10 @@ angular.module('profileviewerApp')
       bio: data.bio,
       featuredFriends: featuredFriends,
       unfeaturedFriendCount: unfeaturedFriendCount,
-      shortPgpFingerprint: pgpPrint,
-      shortOtrFingerprint: otrPrint,
       profiles: profiles,
       websites: websites,
       payments: payments,
-      bitcoinAddress: bitcoinAddress
+      keychain: keychain
     };
 
     Utils.loadAvatar($scope.user.avatarUrl, 'user-avatar-container', $scope.avatarSize);
@@ -143,13 +138,38 @@ angular.module('profileviewerApp')
 
   $scope.openPaymentModal = function (size) {
     var modalInstance = $modal.open({
-      templateUrl: '/views/_sendMoney.html',
+      templateUrl: '/views/_sendMoneyModal.html',
       controller: 'SendMoneyCtrl',
       size: size,
       resolve: {
-        bitcoinAddress: function () {
-          console.log($scope.user.bitcoinAddress);
-          return $scope.user.bitcoinAddress;
+        payments: function() {
+          var payments = [];
+          var validPaymentTypes = ['bitcoin', 'dogecoin', 'litecoin', 'namecoin'];
+          for (var i in $scope.user.payments) {
+            var payment = $scope.user.payments[i];
+            if (payment.type && payment.identifier) {
+              if (validPaymentTypes.indexOf(payment.type) !== -1) {
+                payments.push(payment);
+              }
+            }
+          }
+          return payments;
+        }
+      }
+    });
+    return modalInstance;
+  };
+
+  $scope.openPublicKeyModal = function (type) {
+    var modalInstance = $modal.open({
+      templateUrl: '/views/_publicKeyModal.html',
+      controller: 'PublicKeyCtrl',
+      resolve: {
+        publicKey: function () {
+          if (type === 'pgp') {
+            return $scope.user.bitcoinAddress;
+          }
+          
         }
       }
     });

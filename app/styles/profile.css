@@ -130,12 +130,8 @@ p {
 }
 
 .accounts .profile-box {
-	padding: 20px 30px;
+	padding: 15px 30px 20px 30px;
 	font-size: 18px;
-}
-.network-section .profile-box {
-	padding: 10px 10px;
-	font-size: 14px;
 }
 .profile-box {
 	display: block;
@@ -324,7 +320,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#444444', end
 	border-bottom: 1px solid #e0e0e0;
 }
 .key-link a {
-	padding: 8px 12px 24px 12px;
+	padding: 12px 0px 24px 0px;
 	display: block;
 	font-size: 16px;
 }

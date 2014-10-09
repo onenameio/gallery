@@ -8,11 +8,18 @@
  * Controller of the profileviewerApp
  */
 angular.module('profileviewerApp')
-.controller('SendMoneyCtrl', function ($scope, $modalInstance, bitcoinAddress) {
+.controller('SendMoneyCtrl', function ($scope, $modalInstance, payments) {
 
-  $scope.bitcoinAddress = bitcoinAddress;
+  $scope.payments = payments;
 
-  $scope.copyButtonText = 'Copy Address';
+  $scope.selectMethod = function(index) {
+    $scope.paymentIndex = index;
+    $scope.address = payments[index].identifier;
+    $scope.paymentType = payments[index].type;
+    $scope.copyButtonText = 'Copy Address';
+  };
+
+  $scope.selectMethod(0);
 
   $scope.toggleQrcode = function() {
     if ($scope.qrcodeShown) {
@@ -23,11 +30,11 @@ angular.module('profileviewerApp')
   };
 
   $scope.resetAddress = function() {
-    $scope.bitcoinAddress = bitcoinAddress;
+    $scope.address = payments[$scope.paymentIndex].identifier;
   };
 
   $scope.getTextToCopy = function() {
-    return $scope.bitcoinAddress;
+    return $scope.address;
   };
 
   $scope.notifyUserOfCopy = function() {

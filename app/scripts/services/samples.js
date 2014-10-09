@@ -32,7 +32,17 @@ angular.module('profileviewerApp')
             unfeaturedFriendCount: 24,
             shortPgpFingerprint: 'A93E A312',
             shortOtrFingerprint: '756C E84F',
-            payments: [{ type: 'bitcoin', identifier: '14eautXfJT7EZsKfm1eHSAPnHkn3w1XF9R' }],
+            keychain: [
+              { type: 'pgp', fingerprint: 'DDA1CF3D659064044EC99354429E1A42A93EA312', value: 'https://s3.amazonaws.com/97p/pubkey.asc' },
+              { type: 'otr', fingerprint: '756CE84F 90ABDE84 0555F4E2 E0B2ACB1 297F9E65' },
+              { type: 'bitcoin', fingerprint: '1FbynFXB1C6jSAQZivucAnzAm9N7GxURYa', value: '083a0518062cc3c5ad48501c60aa06059785449f579a256ed2f1a5e781a109d978e54b20fb43b6e90dc91d8f9898665b969e122df6e1d1e5ce06c790f618a2c4'},
+            ],
+            payments: [
+              { type: 'bitcoin', identifier: '14eautXfJT7EZsKfm1eHSAPnHkn3w1XF9R' },
+              { type: 'namecoin', identifier: 'N4izoiyX9XKapXqsts7bSN7c3Bcgnr9aeo' },
+              { type: 'dogecoin', identifier: 'DMHjRxrKN48EQZQDmmoghxZPRRZrvDJeVh' },
+              { type: 'quarkcoin', identifier: '' }
+            ],
             profiles: [
               { type: 'twitter', iconClass: 'fa-twitter', username: 'ryaneshea',
                 url: 'https://twitter.com/ryaneshea',
