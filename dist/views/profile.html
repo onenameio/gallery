@@ -1,4 +1,4 @@
-<div class="profile-header"> <div class="container"> <div class="row"> <div class="col-md-3 header-section"> <hr> <div id="user-avatar-container" class="avatar-container circle-container-lg"> </div> <!--<div class="avatar-border">
+<div class="profile-header"> <div class="container"> <div class="row"> <div class="col-md-3 header-section"> <div id="user-avatar-container" class="avatar-container circle-container-lg"> </div> <!--<div class="avatar-border">
       </div>--> <div class="follow-button-container"> <a href="#" type="button" class="btn btn-black" style="width: 200px; margin: auto">Follow</a> </div> </div> <div class="col-md-3 header-section"> <h3>+{{ user.username }}</h3> <div class="sandwich-text"> <h1 class="name">{{ user.name }}</h1> </div> <p> <i class="fa fa-map-marker"></i> {{ user.location }} </p> <p class="bio"> {{ user.bio }} </p> </div> <div class="col-md-3 header-section friends-section"> <div ng-if="!user.featuredFriends" class="no-friends"> <!--<h4>Friends</h4>
         <p>
           <i>(user isn't following anyone who is following them back)</i>
