@@ -92,7 +92,7 @@ p {
   max-width: 100%;
 }
 .sandwich-text h1 {
-	padding-top: 10px;
+	padding-top: 15px;
 	padding-bottom: 10px;
 	margin-top: 5px;
 	margin-bottom: 10px;
@@ -315,4 +315,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#444444', end
 }
 .friend-item .username {
 	margin: 5px;
+}
+
+.key-link {
+	border-bottom: 1px solid #e0e0e0;
+}
+.key-link a {
+	padding: 8px 12px 24px 12px;
+	display: block;
+	font-size: 16px;
 }

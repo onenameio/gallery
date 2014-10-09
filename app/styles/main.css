@@ -1,29 +1,27 @@
 /* FONTS */
-@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow|Montserrat|Oswald|Roboto+Condensed);
+@import url(http://fonts.googleapis.com/css?family=Merriweather+Sans|Source+Sans+Pro|Lato|PT+Sans|Open+Sans|PT+Sans+Narrow|Montserrat|Oswald|Roboto+Condensed);
 
 /* OVERALL ASPECT */
 
 body {
   background-color: white;
-  font-family: 'Open Sans', sans-serif;
-  //font-weight: 300;
   font-size: 16px;
-  color: #555;
+  color: #444;
 
   -webkit-font-smoothing: antialiased;
   -webkit-overflow-scrolling: touch;
-  
-  margin-top: 70px;
+}
+
+body {
+  margin-top: 80px;
 }
 
 /* Titles */
-h1, h2, h3, h4, h5, h6, .navbar-brand {
-  font-family: 'Roboto Condensed', sans-serif;
-  color: #333;
+body, h1, h2, h3, h4, h5, h6, .navbar-brand {
+  font-family: 'PT Sans', sans-serif;
 }
 
 .thick-text {
-  
   font-weight: bold;
 }
 
@@ -102,9 +100,9 @@ hr {
   color: #ffffff;
 }
 
-.btn-primary, .btn-primary:hover, .btn-primary:hover,
-.btn-warning, .btn-warning:hover, .btn-warning:hover,
-.btn-danger, .btn-danger:hover, .btn-danger:hover,
+.btn-primary, .btn-primary:hover, .btn-primary:visited,
+.btn-warning, .btn-warning:hover, .btn-warning:visited,
+.btn-danger, .btn-danger:hover, .btn-danger:visited,
 .btn-success, .btn-success:hover, .btn-success:visited,
 .btn-black, .btn-black:hover, .btn-black:visited {
   color: white;
@@ -117,7 +115,10 @@ hr {
   padding-top: 1px;
 }
 .btn-bare:hover {
-  color: #444;
+  color: #444 !important;
+}
+.btn-bare:visited {
+  color: #999;
 }
 
 /*.btn-primary {
