@@ -9,7 +9,7 @@
  */
 
 angular.module('profileviewerApp')
-.controller('ProfileCtrl', function ($scope, $routeParams, Utils, Person, Samples) {
+.controller('ProfileCtrl', function ($scope, $routeParams, Utils, Person, Samples, $modal) {
   $scope.user = {};
 
   $scope.avatarSize = 200;
@@ -18,35 +18,9 @@ angular.module('profileviewerApp')
   var hasProp = Utils.hasProp;
   var getProp = Utils.getProp;
 
-  $scope.loadAvatar = function(avatarUrl, elementId, diameter) {
-    var img = new Image();
-        img.onload = function() {
-          document.getElementById(elementId).appendChild(img);
-          if (img.height < img.width) {
-            img.style.height = '100%';
-            img.style.width = 'auto';
-            var marginLeft = -((diameter/img.height)*img.width - diameter)/2;
-            img.style.marginLeft = marginLeft.toString() + 'px';
-          }
-      };
-        img.src = avatarUrl;
-  };
-
-  $scope.loadBackground = function(coverImageURL, elementId) {
-    var img = new Image();
-    img.onload = function() {
-      var profileBottom = document.getElementById(elementId);
-      profileBottom.style.backgroundImage = 'url(' + img.src + ')';
-      profileBottom.style.backgroundSize = 'cover';
-      profileBottom.style.webkitBackgroundSize = 'cover';
-      profileBottom.style.mozBackgroundSize = 'cover';
-    };
-    img.src = coverImageURL;
-  };
-
   Person.findByUsername($routeParams.username, function(data) {
     var profiles = [], payments = [], featuredFriends = [], websites = [],
-      profile = null, avatarUrl = null, backgroundUrl = null,
+      profile = null, avatarUrl = null, backgroundUrl = null, bitcoinAddress = null,
       pgpPrint = null, otrPrint = null, unfeaturedFriendCount = 0, name = null, location = null;
 
     if (hasProp(data, 'twitter', 'username') && hasProp(data, 'twitter', 'proof', 'url')) {
@@ -125,6 +99,12 @@ angular.module('profileviewerApp')
       location = data.location;
     }
 
+    for (var paymentIndex in payments) {
+      if (payments[paymentIndex].type === 'bitcoin') {
+        bitcoinAddress = payments[paymentIndex].identifier;
+      }
+    }
+
     $scope.user = {
       username: $routeParams.username,
       name: name,
@@ -139,24 +119,41 @@ angular.module('profileviewerApp')
       profiles: profiles,
       websites: websites,
       payments: payments,
+      bitcoinAddress: bitcoinAddress
     };
 
-    $scope.loadAvatar($scope.user.avatarUrl, 'user-avatar-container', $scope.avatarSize);
-    $scope.loadBackground($scope.user.backgroundUrl, 'profile-bottom');
+    Utils.loadAvatar($scope.user.avatarUrl, 'user-avatar-container', $scope.avatarSize);
+    Utils.loadBackground($scope.user.backgroundUrl, 'profile-bottom');
 
     for (var j = 0; j < $scope.user.featuredFriends.length; j++) {
-      $scope.loadAvatar($scope.user.featuredFriends[j].avatarUrl, 'friend-avatar-' + j, $scope.friendAvatarSize);
+      Utils.loadAvatar($scope.user.featuredFriends[j].avatarUrl, 'friend-avatar-' + j, $scope.friendAvatarSize);
     }
   }, function() {
     if ($routeParams.username === 'ryansheasample') {
 
       $scope.user = Samples.user();
-      $scope.loadAvatar($scope.user.avatarUrl, 'user-avatar-container', $scope.avatarSize);
-      $scope.loadBackground($scope.user.backgroundUrl, 'profile-bottom');
+      Utils.loadAvatar($scope.user.avatarUrl, 'user-avatar-container', $scope.avatarSize);
+      Utils.loadBackground($scope.user.backgroundUrl, 'profile-bottom');
       
       for (var i = 0; i < $scope.user.featuredFriends.length; i++) {
-        $scope.loadAvatar($scope.user.featuredFriends[i].avatarUrl, 'friend-avatar-' + i, $scope.friendAvatarSize);
+        Utils.loadAvatar($scope.user.featuredFriends[i].avatarUrl, 'friend-avatar-' + i, $scope.friendAvatarSize);
       }
     }
   });
+
+  $scope.openPaymentModal = function (size) {
+    var modalInstance = $modal.open({
+      templateUrl: '/views/_sendMoney.html',
+      controller: 'SendMoneyCtrl',
+      size: size,
+      resolve: {
+        bitcoinAddress: function () {
+          console.log($scope.user.bitcoinAddress);
+          return $scope.user.bitcoinAddress;
+        }
+      }
+    });
+    return modalInstance;
+  };
+
 });

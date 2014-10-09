@@ -128,6 +128,15 @@ hr {
   background-color: #222;
 }
 
+.btn-default {
+  background-color: #CCC;
+}
+input[type=text] {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+}
+
 /*.btn-primary {
   background-color: #5E7289;
 }

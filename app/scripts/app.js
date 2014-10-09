@@ -14,7 +14,9 @@ angular
     'ngCookies',
     'ngResource',
     'ngRoute',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'ngClipboard',
+    'monospaced.qrcode'
   ])
   .config(function ($compileProvider, $locationProvider, $routeProvider) {
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|file|tel|bitcoin|skype|mailto|callto|bitmsg):/);

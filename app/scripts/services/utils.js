@@ -35,6 +35,19 @@ angular.module('profileviewerApp')
 		};
 		img.src = avatarUrl;
 	};
+
+	Utils.loadBackground = function(coverImageURL, elementId) {
+		var img = new Image();
+		img.onload = function() {
+			var profileBottom = document.getElementById(elementId);
+			profileBottom.style.backgroundImage = 'url(' + img.src + ')';
+			profileBottom.style.backgroundSize = 'cover';
+			profileBottom.style.webkitBackgroundSize = 'cover';
+			profileBottom.style.mozBackgroundSize = 'cover';
+		};
+		img.src = coverImageURL;
+	};
+
 	return Utils;
 }])
 ;

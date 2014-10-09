@@ -103,10 +103,10 @@
       </div>
       <!-- END KEYCHAIN ITEMS -->
 
-      <div class="row" ng-if="user.payments" ng-controller="SendMoneyCtrl">
+      <div class="row" ng-if="user.payments">
         <div class="col-md-12">
           <div class="send-money-container">
-            <a href="#" type="button" class="btn btn-success btn-lg btn-block" ng-click="open('lg')">Send Money</a>
+            <a href="#" type="button" class="btn btn-success btn-lg btn-block" ng-click="openPaymentModal()">Send Money</a>
           </div>
         </div>
       </div>

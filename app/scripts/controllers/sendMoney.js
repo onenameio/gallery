@@ -2,34 +2,44 @@
 
 /**
  * @ngdoc function
- * @name profileviewerApp.controller:SendMoneyCtrl
+ * @name profileviewerApp.controller:ModalInstanceCtrl
  * @description
- * # SendMoneyCtrl
+ * # ModalInstanceCtrl
  * Controller of the profileviewerApp
  */
 angular.module('profileviewerApp')
-.controller('SendMoneyCtrl', function ($scope, $modal, $log) {
+.controller('SendMoneyCtrl', function ($scope, $modalInstance, bitcoinAddress) {
 
-  $scope.items = ['item1', 'item2', 'item3'];
+  $scope.bitcoinAddress = bitcoinAddress;
 
-  $scope.open = function (size) {
+  $scope.copyButtonText = 'Copy Address';
 
-    var modalInstance = $modal.open({
-      templateUrl: '/views/_sendMoney.html',
-      controller: 'ModalInstanceCtrl',
-      size: size,
-      resolve: {
-        items: function () {
-          return $scope.items;
-        }
-      }
-    });
+  $scope.toggleQrcode = function() {
+    if ($scope.qrcodeShown) {
+      $scope.qrcodeShown = false;
+    } else {
+      $scope.qrcodeShown = true;
+    }
+  };
 
-    modalInstance.result.then(function (selectedItem) {
-      $scope.selected = selectedItem;
-    }, function () {
-      $log.info('Modal dismissed at: ' + new Date());
-    });
+  $scope.resetAddress = function() {
+    $scope.bitcoinAddress = bitcoinAddress;
+  };
+
+  $scope.getTextToCopy = function() {
+    return $scope.bitcoinAddress;
+  };
+
+  $scope.notifyUserOfCopy = function() {
+    $scope.copyButtonText = 'Copied!';
+  };
+
+  $scope.ok = function () {
+    $modalInstance.close();
+  };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
   };
 
 });

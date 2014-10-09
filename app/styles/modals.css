@@ -1,0 +1,37 @@
+.modal-content {
+	border-radius: 0px;
+}
+
+.payment-row {
+	margin: 15px 0px;
+}
+.copy-address-btn {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+}
+
+@media screen and (max-width: 768px) {
+	.desktop-payments {
+		display: none;
+	}
+	.mobile-payments {
+		display: block;
+	}
+	.copy-address-btn {
+		display: none !important;
+	}
+}
+@media screen and (min-width: 768px) {
+	.desktop-payments {
+		display: block;
+	}
+	.mobile-payments {
+		display: none;
+	}
+	.btn-fixed-width {
+		margin-left: 3px;
+		margin-right: 3px;
+		width: 175px;
+	}
+}
