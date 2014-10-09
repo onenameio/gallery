@@ -5,7 +5,6 @@
 
 body {
   background-color: white;
-  font-size: 14px;
   color: #444;
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -291,17 +290,11 @@ hr {
 
 }
 
-ul#horizontal-list {
+ul.horizontal-list {
   list-style: none;
   padding-left: 0px;
-  text-align: center;
 }
-ul#horizontal-list li {
+ul.horizontal-list li {
   display: inline-block;
   margin: 5px;
 }
-
-.horizontal-friend-item {
-
-}
-

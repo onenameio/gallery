@@ -38,7 +38,7 @@
       </div>
 
       <div ng-if="user.featuredFriends">
-        <h4>Followers</h4>
+        <h4>Following</h4>
         <div class="friend-item-container">
           <div class="friend-item grouped-friend-item" ng-repeat="friend in user.featuredFriends">
             <a href="/{{ friend.username }}">
@@ -103,10 +103,10 @@
       </div>
       <!-- END KEYCHAIN ITEMS -->
 
-      <div class="row" ng-if="user.payments">
+      <div class="row" ng-if="user.payments" ng-controller="SendMoneyCtrl">
         <div class="col-md-12">
           <div class="send-money-container">
-            <a href="#" type="button" class="btn btn-success btn-lg btn-block">Send Money</a>
+            <a href="#" type="button" class="btn btn-success btn-lg btn-block" ng-click="open('lg')">Send Money</a>
           </div>
         </div>
       </div>
@@ -150,7 +150,6 @@
         </p>
       </div>
     </div>
-
   </div>
 
 </div>

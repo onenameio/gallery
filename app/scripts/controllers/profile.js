@@ -101,7 +101,7 @@ angular.module('profileviewerApp')
     
     if (hasProp(data, 'pgp', 'fingerprint')) {
         pgpPrint = data.pgp.fingerprint;
-        pgpPrint = pgpPrint.slice(pgpPrint.length-16,pgpPrint.length).match(/.{1,4}/g).join(' ');
+        pgpPrint = pgpPrint.slice(pgpPrint.length-8,pgpPrint.length).match(/.{1,4}/g).join(' ');
     }
 
     if (hasProp(data, 'avatar', 'url')) {

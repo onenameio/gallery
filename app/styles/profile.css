@@ -328,3 +328,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#444444', end
 	display: block;
 	font-size: 16px;
 }
+
+ul.horizontal-friend-list {
+  list-style: none;
+  padding-left: 0px;
+}
+ul.horizontal-friend-list li {
+  display: inline-block;
+}
+
