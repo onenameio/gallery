@@ -10,7 +10,7 @@
       <!--<div class="avatar-border">
       </div>-->
       <div class="follow-button-container">
-        <a href="#" type="button" class="btn btn-black" style="width: 200px; margin: auto;">Follow</a>
+        <a href="#" type="button" class="btn btn-black follow-button" ng-click="openFollowModal()">Follow</a>
       </div>
     </div>
     
@@ -80,14 +80,14 @@
       <!-- KEYCHAIN ITEMS -->
       <div class="row" ng-if="user.keychain">
         <div class="col-md-12">
-          <div ng-repeat="key in user.keychain | limitTo:2" class="key-link">
-              <a href="#" type="button" class="btn btn-bare btn-block" ng-if="key.type">
+          <div ng-repeat="key in user.keychain | limitTo:2 track by $index" class="key-link">
+              <a href="#" type="button" class="btn-bare" ng-if="key.type" ng-click="openPublicKeyModal($index)">
                   <span class="pull-left">
                     <i class="fa fa-key"></i>
                     <span>{{ key.type }}</span>
                   </span>
                   <span class="pull-right">
-                    <span ng-repeat="chunk in key.fingerprint | pgpFingerprintChunks : 8 track by $index" class="pgp-chunk">
+                    <span ng-repeat="chunk in key.fingerprint | pgpFingerprintChunks : 8" class="pgp-chunk">
                     {{ chunk }}
                     </span>
                   </span>

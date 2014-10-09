@@ -160,18 +160,28 @@ angular.module('profileviewerApp')
     return modalInstance;
   };
 
-  $scope.openPublicKeyModal = function (type) {
+  $scope.openPublicKeyModal = function ($index) {
     var modalInstance = $modal.open({
       templateUrl: '/views/_publicKeyModal.html',
       controller: 'PublicKeyCtrl',
       resolve: {
         publicKey: function () {
-          if (type === 'pgp') {
-            return $scope.user.bitcoinAddress;
+          var validPublicKeyTypes = ['pgp', 'otr', 'ssh'];
+          var publicKey = $scope.user.keychain[$index];
+          if (validPublicKeyTypes.indexOf(publicKey.type) === -1) {
+            return null;
           }
-          
+          return publicKey;
         }
       }
+    });
+    return modalInstance;
+  };
+
+  $scope.openFollowModal = function () {
+    var modalInstance = $modal.open({
+      templateUrl: '/views/_followModal.html',
+      controller: 'FollowModalCtrl'
     });
     return modalInstance;
   };

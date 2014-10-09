@@ -1,7 +1,21 @@
+/* General */
 .modal-content {
 	border-radius: 0px;
 }
 
+/* Keychain */
+.pgp-fingerprint-row {
+	margin-bottom: 20px;
+	font-size: 12px;
+}
+.pgp-fingerprint {
+	text-align: right;
+}
+.pgp-chunk {
+	margin: 0px 3px;
+}
+
+/* Payments */
 .payment-row {
 	margin: 15px 0px;
 }
@@ -10,7 +24,6 @@
 	top: 8px;
 	right: 8px;
 }
-
 @media screen and (max-width: 768px) {
 	.desktop-payments {
 		display: none;

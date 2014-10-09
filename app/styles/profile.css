@@ -151,7 +151,7 @@ p {
 
 .profile-box .profile {
 	overflow: hidden;
-	max-width: 65%;
+	max-width: 100%;
 	text-align: left;
 }
 .profile-inner-box {
@@ -333,3 +333,7 @@ ul.horizontal-friend-list li {
   display: inline-block;
 }
 
+.follow-button {
+	width: 200px;
+	margin: auto;
+}

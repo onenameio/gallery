@@ -52,28 +52,14 @@ p.super, ol.super, ul.super {
 
 /* Links */
 a {
-  color: lightblue;
-
-  -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
-  -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
-  -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
-  -o-transition: color 0.1s ease-in, background 0.1s ease-in;
-  transition: color 0.1s ease-in, background 0.1s ease-in;
+  color: blue;
 }
 
 a:hover,
 a:focus {
   text-decoration: none;
   outline: 0;
-}
-
-a:before,
-a:after {
-  -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
-  -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
-  -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
-  -o-transition: color 0.1s ease-in, background 0.1s ease-in;
-  transition: color 0.1s ease-in, background 0.1s ease-in;
+  color: blue;
 }
 
 /* Bootstrap Modifications */
@@ -132,7 +118,7 @@ hr {
   background-color: #fff;
   border: 1px solid #ccc !important;
 }
-input[type=text] {
+input[type=text], .modal-dialog textarea {
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;

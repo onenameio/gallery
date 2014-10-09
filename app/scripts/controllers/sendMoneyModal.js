@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc function
- * @name profileviewerApp.controller:ModalInstanceCtrl
+ * @name profileviewerApp.controller:SendMoneyCtrl
  * @description
- * # ModalInstanceCtrl
+ * # SendMoneyCtrl
  * Controller of the profileviewerApp
  */
 angular.module('profileviewerApp')

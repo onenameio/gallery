@@ -8,7 +8,7 @@
  * Controller of the profileviewerApp
  */
 angular.module('profileviewerApp')
-  .controller('NavbarCtrl', function ($scope, Person, Utils) {
+  .controller('NavbarCtrl', function ($scope, Person, Utils, $modal) {
 
 	var hasProp = Utils.hasProp;
 
@@ -46,5 +46,13 @@ angular.module('profileviewerApp')
 			console.log(error);
 		});
 	};
+
+	$scope.openSignupModal = function () {
+    	var modalInstance = $modal.open({
+    		templateUrl: '/views/_signupModal.html',
+			controller: 'SignupModalCtrl'
+   		});
+    	return modalInstance;
+ 	};
 
   });

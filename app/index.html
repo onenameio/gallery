@@ -28,7 +28,6 @@
 
     <!-- Fixed navbar -->
     <div class="navbar navbar-default navbar-fixed-top" ng-controller="NavbarCtrl">
-
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -45,7 +44,7 @@
 
           <ul class="nav navbar-nav navbar-right">
             <li>
-              <a href="https://onename.io">SIGN UP</a>
+              <a href="" ng-click="openSignupModal()">SIGN UP</a>
             </li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -96,15 +95,19 @@
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/services/utils.js"></script>
-    <script src="scripts/services/profile.js"></script>
+    <script src="scripts/services/person.js"></script>
     <script src="scripts/services/samples.js"></script>
+    <script src="scripts/services/pgpkey.js"></script>
     <script src="scripts/directives/typeahead.js"></script>
     <script src="scripts/filters/filters.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/about.js"></script>
     <script src="scripts/controllers/profile.js"></script>
     <script src="scripts/controllers/navbar.js"></script>
-    <script src="scripts/controllers/sendMoney.js"></script>
+    <script src="scripts/controllers/sendMoneyModal.js"></script>
+    <script src="scripts/controllers/publicKeyModal.js"></script>
+    <script src="scripts/controllers/signupModal.js"></script>
+    <script src="scripts/controllers/followModal.js"></script>
     <!-- endbuild -->
 </body>
 </html>
