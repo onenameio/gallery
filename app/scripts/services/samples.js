@@ -22,7 +22,7 @@ angular.module('profileviewerApp')
             avatarUrl: 'https://s3.amazonaws.com/97p/tux.jpg',
             backgroundUrl: 'https://s3.amazonaws.com/dx3/ryanshea',
             location: 'New York, NY',
-            bio: 'Co-founder of OneName with @Muneeb. Bitcoin, identity, the blockchain, and decentralization.',
+            bio: 'Co-founder of Onename with @Muneeb. Bitcoin, identity, the blockchain, and decentralization.',
             featuredFriends: [
               { username: 'muneeb', avatarUrl: 'https://s3.amazonaws.com/kd4/muneeb' },
               { username: 'albertwenger', avatarUrl: 'https://pbs.twimg.com/profile_images/1773890030/aew_artistic_bigger.gif' },

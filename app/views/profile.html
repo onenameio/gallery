@@ -45,7 +45,7 @@
             <a href="/{{ friend.username }}">
               <div class="avatar-container square-container-100" id="friend-avatar-{{ $index }}">
                 <div class="username-section">
-                  <div class="username">{{ friend.username }}</div>
+                  <h5 class="username">{{ friend.username }}</h5>
                 </div>
               </div>
             </a>
@@ -82,28 +82,22 @@
       <div class="row">
         <div class="col-md-12">
           
-          <div ng-if="user.shortPgpFingerprint">
-            <a href="#" type="button" class="btn btn-bare btn-block" >
-              <p class="super">
-                <span class="pull-left">
-                  <i class="fa fa-key"></i> PGP
-                </span>
-                <span class="pull-right">{{ user.shortPgpFingerprint }}</span>
-              </p>
-            </a>
-            <hr>
+          <div ng-if="user.shortPgpFingerprint" class="key-link">
+              <a href="#" type="button" class="btn btn-bare btn-block" >
+                  <span class="pull-left">
+                    <i class="fa fa-key"></i> PGP
+                  </span>
+                  <span class="pull-right">{{ user.shortPgpFingerprint }}</span>
+              </a>
           </div>
           
-          <div ng-if="user.shortOtrFingerprint">
-            <a href="#" type="button" class="btn btn-bare btn-block">
-              <p class="super">
-                <span class="pull-left">
-                  <i class="fa fa-key"></i> OTR
-                </span>
-                <span class="pull-right">{{ user.shortOtrFingerprint }}</span>
-              </p>
-            </a>
-            <hr>
+          <div ng-if="user.shortOtrFingerprint" class="key-link">
+              <a href="#" type="button" class="btn btn-bare btn-block">
+                  <span class="pull-left">
+                    <i class="fa fa-key"></i> OTR
+                  </span>
+                  <span class="pull-right">{{ user.shortOtrFingerprint }}</span>
+              </a>
           </div>
           
         </div>
