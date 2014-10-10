@@ -25,7 +25,8 @@ angular.module('profileviewerApp')
 	Utils.loadAvatar = function(avatarUrl, elementId, diameter) {
 		var img = new Image();
 		img.onload = function() {
-			document.getElementById(elementId).appendChild(img);
+			var container = document.getElementById(elementId);
+			container.appendChild(img);
 			if (img.height < img.width) {
 				img.style.height = '100%';
 				img.style.width = 'auto';
@@ -35,7 +36,6 @@ angular.module('profileviewerApp')
 		};
 		img.src = avatarUrl;
 	};
-
 	Utils.loadBackground = function(coverImageURL, elementId) {
 		var img = new Image();
 		img.onload = function() {

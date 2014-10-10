@@ -6,8 +6,7 @@
 	<div class="followees-modal-container">
       <div class="friend-item grouped-friend-item" ng-repeat="friend in followees">
         <a href="/{{ friend.username }}" ng-click="cancel()">
-          <div class="avatar-container square-container-100" id="followees-modal-avatar-{{ $index }}">
-          	<img ng-src="{{ friend.avatarUrl }}" fallback-src="https://s3.amazonaws.com/onename/avatar-placeholder.png">
+          <div class="avatar-container square-container-100" id="followees-avatar-{{ $index }}">
             <div class="username-section">
               <h5 class="username">{{ friend.username }}</h5>
             </div>

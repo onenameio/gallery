@@ -66,9 +66,9 @@ angular.module('profileviewerApp')
           followees.push(followee);
           if (i < numFeatured) {
             featuredFriends.push(followee);
+            unfeaturedFriendCount = unfeaturedFriendCount - 1;
           }
           i = i + 1;
-          unfeaturedFriendCount = unfeaturedFriendCount - 1;
         }
       }
     }
