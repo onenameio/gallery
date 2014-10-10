@@ -80,14 +80,11 @@ p {
 	-webkit-mask-image: url('/images/square-mask-150.svg');
 }
 
-.name {
+h1.name {
 	text-transform: uppercase;
 	font-family: 'Open Sans Condensed', sans-serif;
 	font-size: 44px;
 	font-weight: bold;
-}
-.bio {
-
 }
 
 .sandwich-text {
