@@ -1,0 +1,18 @@
+<div class="modal-header">
+  <button type="button" class="close" ng-click="cancel()">&times;</button>
+  <h3 class="modal-title">Following</h3>
+</div>
+<div class="modal-body">
+	<div class="followees-modal-container">
+      <div class="friend-item grouped-friend-item" ng-repeat="friend in followees">
+        <a href="/{{ friend.username }}" ng-click="cancel()">
+          <div class="avatar-container square-container-100" id="followees-modal-avatar-{{ $index }}">
+          	<img ng-src="{{ friend.avatarUrl }}" fallback-src="https://s3.amazonaws.com/onename/avatar-placeholder.png">
+            <div class="username-section">
+              <h5 class="username">{{ friend.username }}</h5>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+</div>

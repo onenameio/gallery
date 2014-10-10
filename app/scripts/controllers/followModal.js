@@ -19,4 +19,8 @@ angular.module('profileviewerApp')
     	return modalInstance;
  	};
 
+ 	$scope.cancel = function () {
+    	$modalInstance.dismiss('cancel');
+	};
+
 });

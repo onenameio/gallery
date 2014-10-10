@@ -82,6 +82,9 @@ p {
 
 .name {
 	text-transform: uppercase;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 44px;
+	font-weight: bold;
 }
 .bio {
 
@@ -91,8 +94,8 @@ p {
   display: inline-block;
   max-width: 100%;
 }
-.sandwich-text h1 {
-	padding-top: 15px;
+.sandwich-text h1, .sandwich-text h2, .sandwich-text h3 {
+	padding-top: 10px;
 	padding-bottom: 10px;
 	margin-top: 5px;
 	margin-bottom: 10px;
@@ -285,6 +288,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#444444', end
 
 .bitmessage-icon {
 	color: #444;
+}
+
+.followees-modal-container {
+	display: table;
 }
 
 .friend-item-container {

@@ -1,11 +1,16 @@
 <div class="modal-header">
-    <h3 class="modal-title">Send Money</h3>
+	<button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h3 class="modal-title">
+    	Send
+    	<span ng-if="payments.length > 1">Money</span>
+    	<span ng-if="payments.length == 1">{{ payments[0].type }}</span>
+    </h3>
 </div>
 <div class="modal-body">
 
-	<div class="sm-push">
+	<div class="sm-push" ng-if="payments.length > 1">
 		<div class="btn-group">
-  			<button type="button" class="btn btn-default" ng-repeat="payment in payments | limitTo:5 track by $index" ng-click="selectMethod($index)">
+  			<button type="button" class="btn btn-default" ng-repeat="payment in payments | limitTo:5 track by $index" ng-click="selectMethod($index)" ng-class="{active:paymentIndex == $index}">
   				{{ payment.type }}
   			</button>
 		</div>

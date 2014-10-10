@@ -18,4 +18,8 @@ angular.module('profileviewerApp')
     });
   }
 
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
+
 });

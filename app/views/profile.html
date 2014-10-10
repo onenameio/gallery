@@ -15,15 +15,15 @@
     </div>
     
     <div class="col-md-3 header-section">
-      <h3>+{{ user.username }}</h3>
+      <h4>+{{ user.username }}</h4>
       <div class="sandwich-text">
         <h1 class="name">{{ user.name }}</h1>
       </div>
-      <p>
+      <p ng-if="user.location">
         <i class="fa fa-map-marker"></i>
         {{ user.location }}
       </p>
-      <p class="bio">
+      <p class="bio" ng-if="user.bio">
         {{ user.bio }}
       </p>
     </div>
@@ -52,7 +52,7 @@
         </div>
 
         <p ng-if="user.unfeaturedFriendCount">
-          <a href="#" class="btn btn-black">and {{ user.unfeaturedFriendCount }} more...</a>
+          <a href="#" class="btn btn-black" ng-click="openFollowingModal('lg')">and {{ user.unfeaturedFriendCount }} more...</a>
         </p>
 
       </div>

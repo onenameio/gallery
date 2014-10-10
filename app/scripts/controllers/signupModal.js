@@ -8,11 +8,15 @@
  * Controller of the profileviewerApp
  */
 angular.module('profileviewerApp')
-.controller('SignupModalCtrl', function ($scope) {
+.controller('SignupModalCtrl', function ($scope, $modalInstance) {
 
   $scope.sites = [
     { name: 'onename', url: 'https://onename.io' },
     { name: 'namecoin', url: 'http://namecoin.info/?p=download' }
   ];
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
 
 });
