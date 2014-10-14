@@ -15,12 +15,74 @@ angular.module('profileviewerApp')
   $scope.avatarSize = 200;
   $scope.friendAvatarSize = 100;
 
+  $scope.validContactTypes = ['email', 'phone', 'skype', 'bitmessage', 'xmpp'];
+
   var hasProp = Utils.hasProp;
   var getProp = Utils.getProp;
 
-  Person.findByUsername($routeParams.username, function(data) {
+  $scope.urlDomain = function(url) {
+      var matches = url.match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
+      var domain = matches && matches[1];
+      return domain;
+  };
+
+  $scope.processV01Profile = function(data) {
+    var profiles = [], payments = [], websites = [];
+
+    if (data.website) {
+      var website = { url: data.website, iconClass: 'fa-link', type: 'website dark-gradient', domain: $scope.urlDomain(data.website) };
+      websites.push(website);
+    }
+    if (data.bitcoin) {
+      var payment = { type: 'bitcoin', identifier: data.bitcoin };
+      payments.push(payment);
+    }
+
+    return {
+      username: $routeParams.username,
+      name: data.name,
+      avatarUrl: data.avatar,
+      backgroundUrl: data.cover,
+      location: data.location,
+      bio: data.bio,
+      profiles: profiles,
+      websites: websites,
+      payments: payments,
+    };
+  };
+
+  $scope.processGraphfile = function(graph) {
+    var followees = [], featuredFollowees = [];
+    var numFeatured = 4, numUnfeatured = null;
+    if (graph.followees) {
+      var followeeObject = graph.followees;
+      numUnfeatured = Object.keys(followeeObject).length;
+      for (var i in Object.keys(followeeObject)) {
+        var key = Object.keys(followeeObject)[i];
+        var followee = followeeObject[key];
+        if (hasProp(followee, 'avatar_url')) {
+          followee.avatarUrl = getProp(followee, 'avatar_url');
+        }
+        followees.push(followee);
+        if (i < numFeatured) {
+          featuredFollowees.push(followee);
+          numUnfeatured = numUnfeatured - 1;
+        }
+      }
+    }
+
+    return {
+      followees: followees,
+      featuredFollowees: featuredFollowees,
+      numUnfeatured: numUnfeatured
+    };
+
+  };
+
+  $scope.processV02Profile = function(data) {
+
     var profiles = [], payments = [], featuredFriends = [], websites = [], keychain = [],
-      profile = null, avatarUrl = null, backgroundUrl = null, followees = [],
+      profile = null, avatarUrl = null, backgroundUrl = null, followees = [], contactMethods = [],
       unfeaturedFriendCount = 0, name = null, location = null;
 
     if (hasProp(data, 'twitter', 'username') && hasProp(data, 'twitter', 'proof', 'url')) {
@@ -50,27 +112,11 @@ angular.module('profileviewerApp')
       payments.push({ type: 'bitcoin', identifier: data.bitcoin });
     }
 
-    if (hasProp(data, 'graph', 'followees')) {
-      var graphfileFollowees = data.graph.followees;
-      var i = 0, numFeatured = 4;
-      unfeaturedFriendCount = Object.keys(graphfileFollowees).length;
-      for (var key in graphfileFollowees) {
-        var user = graphfileFollowees[key],
-          friendAvatarUrl = null;
-        if (hasProp(user, 'avatar_url')) {
-          friendAvatarUrl = getProp(user, 'avatar_url');
-        }
-
-        if (friendAvatarUrl) {
-          var followee = { username: key, avatarUrl: friendAvatarUrl };
-          followees.push(followee);
-          if (i < numFeatured) {
-            featuredFriends.push(followee);
-            unfeaturedFriendCount = unfeaturedFriendCount - 1;
-          }
-          i = i + 1;
-        }
-      }
+    if (data.graph) {
+      var processedGraph = $scope.processGraphfile(data.graph);
+      followees = processedGraph.followees;
+      featuredFriends = processedGraph.featuredFollowees;
+      unfeaturedFriendCount = processedGraph.numUnfeatured;
     }
     
     if (hasProp(data, 'pgp', 'fingerprint')) {
@@ -83,7 +129,7 @@ angular.module('profileviewerApp')
 
     if (hasProp(data, 'avatar', 'url')) {
       avatarUrl = data.avatar.url;
-    } else if (hasProp(data, 'avatar')) {
+    } else if (data.avatar) {
       avatarUrl = data.avatar;
     }
     if (hasProp(data, 'cover', 'url')) {
@@ -103,8 +149,15 @@ angular.module('profileviewerApp')
         location = data.location;
       }
     }
+    if (hasProp(data, 'contactMethods')) {
+      contactMethods = data.contactMethods;
+    }
+    if (hasProp(data, 'email')) {
+      var contactMethod = { type: 'email', identifier: data.email };
+      contactMethods.append(contactMethod);
+    }
 
-    $scope.user = {
+    return {
       username: $routeParams.username,
       name: name,
       avatarUrl: avatarUrl,
@@ -117,8 +170,104 @@ angular.module('profileviewerApp')
       profiles: profiles,
       websites: websites,
       payments: payments,
-      keychain: keychain
+      keychain: keychain,
+      contactMethods: contactMethods
     };
+
+  };
+
+  $scope.iconClasses = {
+    twitter: 'fa-twitter',
+    facebook: 'fa-facebook',
+    github: 'fa-github',
+    linkedin: 'fa-linkedin',
+    instagram: 'fa-instagram',
+    reddit: 'fa-reddit',
+    hackernews: 'fa-hacker-news',
+    stackoverflow: 'fa-stack-overflow',
+    angellist: 'fa-angellist',
+    googleplus: 'fa-google-plus'
+  };
+
+  $scope.processV03Profile = function(data) {
+    var featuredFriends = [], i = 0,
+      avatarUrl = null, backgroundUrl = null, followees = [],
+      unfeaturedFriendCount = 0, fullName = null, location = null;
+
+    if (hasProp(data, 'name', 'formatted')) {
+      fullName = data.name.formatted;
+    }
+    if (hasProp(data, 'location', 'formatted')) {
+      location = data.location.formatted;
+    }
+    for (i in data.photos) {
+      var photo = data.photos[i];
+      if (photo.type === 'avatar' && photo.url) {
+        avatarUrl = photo.url;
+      }
+      if (photo.type === 'background' && photo.url) {
+        backgroundUrl = photo.url;
+      }
+    }
+    for (i in data.profiles) {
+      var profile = data.profiles[i];
+      if ($scope.iconClasses[profile.type]) {
+        profile.iconClass = $scope.iconClasses[profile.type];
+      }
+    }
+
+    if (hasProp(data, 'network', 'followees')) {
+      featuredFriends = data.network.followees.slice(0, 4);
+    }
+
+    if (data.graph) {
+      var processedGraph = $scope.processGraphfile(data.graph);
+      followees = processedGraph.followees;
+      featuredFriends = processedGraph.featuredFollowees;
+      unfeaturedFriendCount = processedGraph.numUnfeatured;
+    }
+
+    for (i in data.websites) {
+      var website = data.websites[i];
+      website.domain = $scope.urlDomain(website.url);
+    }
+
+    return {
+      username: $routeParams.username,
+      name: fullName,
+      avatarUrl: avatarUrl,
+      backgroundUrl: backgroundUrl,
+      location: location,
+      bio: data.bio,
+      followees: followees,
+      featuredFriends: featuredFriends,
+      unfeaturedFriendCount: unfeaturedFriendCount,
+      profiles: data.profiles,
+      websites: data.websites,
+      payments: data.payments,
+      keychain: data.keychain,
+      contactMethods: data.contact
+    };
+  };
+
+  $scope.processProfile = function(data) {
+    var user = null;
+    if (data.v) {
+      if (data.v === '0.3') {
+        user = $scope.processV03Profile(data);
+      } else if (data.v === '0.2') {
+        user = $scope.processV02Profile(data);
+      } else if (data.v === '0.1') {
+        user = $scope.processV01Profile(data);
+      }
+    } else {
+      user = $scope.processV02Profile(data);
+    }
+    return user;
+  };
+
+  Person.findByUsername($routeParams.username, function(data) {
+    $scope.user = $scope.processProfile(data);
 
     Utils.loadAvatar($scope.user.avatarUrl, 'user-avatar-container', $scope.avatarSize);
     Utils.loadBackground($scope.user.backgroundUrl, 'profile-bottom');
@@ -128,8 +277,8 @@ angular.module('profileviewerApp')
     }
   }, function() {
     if ($routeParams.username === 'ryansheasample') {
+      $scope.user = $scope.processProfile(Samples.user());
 
-      $scope.user = Samples.user();
       Utils.loadAvatar($scope.user.avatarUrl, 'user-avatar-container', $scope.avatarSize);
       Utils.loadBackground($scope.user.backgroundUrl, 'profile-bottom');
       
@@ -197,6 +346,22 @@ angular.module('profileviewerApp')
       resolve: {
         followees: function() {
           return $scope.user.followees;
+        }
+      }
+    });
+    return modalInstance;
+  };
+
+  $scope.openContactModal = function ($index) {
+    var modalInstance = $modal.open({
+      templateUrl: '/views/_contactModal.html',
+      controller: 'ContactModalCtrl',
+      resolve: {
+        contactMethods: function() {
+          return $scope.user.contactMethods;
+        },
+        index: function() {
+          return $index;
         }
       }
     });

@@ -3,35 +3,35 @@
     <h3 class="modal-title">
     	Send
     	<span ng-if="payments.length > 1">Money</span>
-    	<span ng-if="payments.length == 1">{{ payments[0].type }}</span>
+    	<span ng-if="payments.length == 1">{{ payments[index].type | capitalize }}</span>
     </h3>
 </div>
 <div class="modal-body">
 
-	<div class="sm-push" ng-if="payments.length > 1">
+	<div class="md-push centered" ng-if="payments.length > 1">
 		<div class="btn-group">
-  			<button type="button" class="btn btn-default" ng-repeat="payment in payments | limitTo:5 track by $index" ng-click="selectMethod($index)" ng-class="{active:paymentIndex == $index}">
+  			<button type="button" class="btn btn-default" ng-repeat="payment in payments | limitTo:5 track by $index" ng-click="selectMethod($index)" ng-class="{active:index == $index}">
   				{{ payment.type }}
   			</button>
 		</div>
 	</div>
 
 	<div class="desktop-payments centered">
-	  	<p class="bitcoin-address-highlighter" style="position:relative;">
-	  		<input type="text" class="form-control input-lg" ng-model="address" select-on-click ng-change="resetAddress()" clip-copy="getTextToCopy()" clip-click="notifyUserOfCopy()">
-				<button class="btn btn-default btn-sm copy-address-btn">{{ copyButtonText }}</button>
-	  	</p>
-		<p>
-	        <a class="btn btn-primary btn-fixed-width open-wallet-button" href="{{ paymentType }}:{{ address }}">Open Wallet</a>
+	  	<div class="md-push bitcoin-address-highlighter" style="position:relative;">
+	  		<input type="text" class="form-control input-lg highlight-flash" ng-model="address" select-on-click ng-change="resetAddress()" clip-copy="getTextToCopy()" clip-click="notifyUserOfCopy()">
+			<button class="btn btn-default btn-sm copy-address-btn">{{ copyButtonText }}</button>
+	  	</div>
+		<div class="md-push">
+	        <a class="btn btn-primary btn-fixed-width open-wallet-button" href="{{ payments[index].type }}:{{ address }}">Open {{ payments[index].type | capitalize }} Wallet</a>
 		    <button class="btn btn-default btn-fixed-width show-qrcode-button" ng-click="toggleQrcode()">Show QR Code</button>
-		</p>
-	    <p>
+		</div>
+	    <div>
 		    <div ng-show="qrcodeShown">
 		        <a href="{{ paymentType }}:{{ address }}" class="bitcoin-address-qrcode-large">
 		            <qrcode version="3" error-correction-level="M" size="200" data="{{ address }}"></qrcode>
 		        </a>
 	        </div>
-	    </p>
+	    </div>
 	</div>
 
 	<div class="mobile-payments centered">

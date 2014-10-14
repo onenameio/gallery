@@ -285,6 +285,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#444444', end
 
 .bitmessage-icon {
 	color: #444;
+	margin-top: -1px;
 }
 
 .followees-modal-container {

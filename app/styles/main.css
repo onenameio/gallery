@@ -92,7 +92,7 @@ hr {
 .btn-danger, .btn-danger:hover, .btn-danger:visited,
 .btn-success, .btn-success:hover, .btn-success:visited,
 .btn-black, .btn-black:hover, .btn-black:visited {
-  color: white;
+  color: white !important;
 }
 
 .btn-bare {
@@ -118,7 +118,7 @@ hr {
   background-color: #fff;
   border: 1px solid #ccc !important;
 }
-input[type=text], .modal-dialog textarea {
+input[type=text], .modal-dialog textarea, input, .alert {
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;
@@ -155,7 +155,7 @@ input[type=text], .modal-dialog textarea {
 .btn {
   border-radius: 0px;
   margin-bottom: 0;
-  border: 0px solid transparent;
+  border: 1px solid transparent;
   border-color: transparent;
 }
 

@@ -65,12 +65,20 @@
       <div class="row">
         <div class="col-md-12 contact">
           
-          <a href="{{ contactMethod.url }}" target="_blank" class="btn btn-black" ng-repeat="contactMethod in user.contactMethods" style="margin-right: 4px;">
-            <i class="fa {{ contactMethod.iconClass }} fa-2x" ng-if="contactMethod.iconClass"></i>
-            <span class="fa-stack" ng-if="contactMethod.type === 'bitmessage'">
+          <a href="#" class="btn btn-black" ng-repeat="method in user.contactMethods | limitTo:4 track by $index" style="margin-right: 3px;" ng-click="openContactModal($index)" ng-if="validContactTypes.indexOf(method.type) !== -1">
+            
+            <i class="fa fa-envelope-o fa-2x" ng-if="method.type === 'email'"></i>
+            <i class="fa fa-phone fa-2x" ng-if="method.type === 'phone'"></i>
+            <i class="fa fa-skype fa-2x" ng-if="method.type === 'skype'"></i>
+            <span class="fa-stack" ng-if="method.type === 'bitmessage'">
               <i class="fa fa-comment fa-stack-2x fa-inverse"></i>
               <strong class="fa-stack-1x icon-stack-text bitmessage-icon">BM</strong>
             </span>
+            <span class="fa-stack" ng-if="method.type === 'xmpp'">
+              <i class="fa fa-comment fa-stack-2x"></i>
+              <strong class="fa-stack-1x icon-stack-text bitmessage-icon">XM</strong>
+            </span>
+
           </a>
           
         </div>
@@ -117,7 +125,7 @@
   
   <div class="row accounts">
 
-    <div class="col-md-3 column" ng-repeat="profile in user.profiles">
+    <div class="col-md-3 column" ng-repeat="profile in user.profiles" ng-if="profile.username && profile.proofUrl">
       <div class="profile-box {{ profile.type }}">
         <div class="profile-inner-box">
           <a href="{{ profile.proofUrl }}" class="profile pull-left" target="_blank">
@@ -132,17 +140,17 @@
       </div>
     </div>
 
-    <div class="col-md-3 column" ng-repeat="profile in user.websites">
-      <div class="profile-box {{ profile.type }}">
+    <div class="col-md-3 column" ng-repeat="website in user.websites" ng-if="website.domain && website.url">
+      <div class="profile-box website dark-gradient">
         <div class="profile-inner-box">
-          <a href="{{ profile.url }}" class="profile pull-left" target="_blank">
-            <i class="fa {{ profile.iconClass }} fa-2"></i>
-            <span class="username">{{ profile.username }}</span>
+          <a href="{{ website.url }}" class="profile pull-left" target="_blank">
+            <i class="fa fa-link fa-2"></i>
+            <span class="username">{{ website.domain }}</span>
           </a>
-          <a href="{{ profile.proofUrl }}" class="proof pull-right" target="_blank">
-            <!--<i class="fa fa-certificate fa-2"></i>
-            proof-->
-          </a>
+          <!--<a href="{{ website.proofUrl }}" class="proof pull-right" target="_blank">
+            <i class="fa fa-certificate fa-2"></i>
+            proof
+          </a>-->
         </div>
       </div>
     </div>

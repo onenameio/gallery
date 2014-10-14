@@ -19,7 +19,7 @@ angular
     'monospaced.qrcode'
   ])
   .config(function ($compileProvider, $locationProvider, $routeProvider) {
-    $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|file|tel|skype|mailto|callto|bitmsg|bitcoin|namecoin|litecoin|dogecoin):/);
+    $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|file|tel|skype|mailto|callto|bitmsg|xmpp|bitcoin|namecoin|litecoin|dogecoin):/);
 
     $locationProvider.html5Mode(true).hashPrefix('!');
 

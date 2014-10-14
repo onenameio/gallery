@@ -13,10 +13,10 @@ angular.module('profileviewerApp')
   $scope.payments = payments;
 
   $scope.selectMethod = function(index) {
-    $scope.paymentIndex = index;
+    $scope.index = index;
     $scope.address = payments[index].identifier;
     $scope.paymentType = payments[index].type;
-    $scope.copyButtonText = 'Copy Address';
+    $scope.copyButtonText = 'Click to Copy';
   };
 
   $scope.selectMethod(0);
@@ -30,7 +30,7 @@ angular.module('profileviewerApp')
   };
 
   $scope.resetAddress = function() {
-    $scope.address = payments[$scope.paymentIndex].identifier;
+    $scope.address = payments[$scope.index].identifier;
   };
 
   $scope.getTextToCopy = function() {
