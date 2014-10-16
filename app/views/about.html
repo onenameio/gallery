@@ -1,7 +1,7 @@
 <div class="top-section gray-section">
     <div class="container">
         <div class="row">
-            <div class="col-lg-10 col-lg-offset-1 centered">
+            <div class="col-lg-10 col-lg-offset-1">
                 <h1>Openname for Devs</h1>
                 <h2>The Developer's Guide to the Openname System</h2>
             </div>
@@ -11,21 +11,47 @@
 
 <div class="wrap-section white-section">
     <div class="container">
-			<div class="row mt grid">
-				<div class="col-lg-8 col-lg-offset-2">
-					<h2>OPENDIG</h2>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>OVERVIEW</h2>
+                <p>
+                The Open Name System (ONS) is a protocol that extends DNS by supporting the registration and resolution of:
+                </p>
+                <ol>
+                <li>user handles on the blockchain (DNS for people)</li>
+                <li>domains on the blockchain (decentralized DNS)</li>
+                </ol>
+                <p>
+                 ...all with full DNS backwards-compatibility.
+                </p>
+                <h3>
+                ONS = ICANN DNS + blockchain handles + blockchain domains
+                </h3>
+                <p>
+                ONS currently uses namecoin as a key-value store but the system is blockchain-agnostic.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 
-          <p>
-            Opendig is a command line tool that extends the functionality of dig to support the resolution of user handles registered on the blockchain.
-          </p>
+<div class="wrap-section gray-section">
+    <div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2">
+				<h2>OPENDIG</h2>
 
-          <h4>Installation:</h4>
+                <p>
+                Opendig is a command line tool that extends the functionality of dig to support the resolution of user handles registered on the blockchain.
+                </p>
 
-          <pre><code class="language-css">>>> sudo pip install opendig
+                <h4>Installation:</h4>
+
+                <pre><code class="language-css">>>> sudo pip install opendig
 </code></pre>
 
-<h4>Domains:</h4>
-<pre><code class="language-css">$ opendig -d angel.co
+                <h4>Domains:</h4>
+                <pre><code class="language-css">$ opendig -d angel.co
 
 angel.co. 59 IN A 50.18.171.72
 angel.co. 21599 IN NS ns-1437.awsdns-51.org.
@@ -34,8 +60,8 @@ angel.co. 21599 IN NS ns-193.awsdns-24.com.
 angel.co. 21599 IN NS ns-634.awsdns-15.net.
 ...</code></pre>
 
-<h4>User Data:</h4>
-<pre><code class="language-css">$ opendig -u naval
+                <h4>User Data:</h4>
+                <pre><code class="language-css">$ opendig -u naval
 
 {
     "name": {
@@ -49,26 +75,22 @@ angel.co. 21599 IN NS ns-634.awsdns-15.net.
     }
 }</code></pre>
 
-<h4>Bitcoin User Data:</h4>
-<pre><code class="language-css">$ opendig bitcoin -u naval
+                <h4>Bitcoin User Data:</h4>
+                <pre><code class="language-css">$ opendig bitcoin -u naval
 
 {
         "address": "1919UrhYyhs471ps8CFcJ3DRpWSda8qtSk"
 }</code></pre>
 
-<p>
-  <a href="https://github.com/opennamesystem/opendig" type="button" class="btn btn-black btn-lg">opendig on github</a>
-</p>
-				</div>
-
-				<!--<div class="col-lg-5 centered">
-					<img src="assets/img/04.jpg" alt="">
-				</div>-->
+                <p>
+                    <a href="https://github.com/opennamesystem/opendig" type="button" class="btn btn-default btn-lg">opendig on github</a>
+                </p>
 			</div>
 		</div>
-    </div>
+	</div>
+</div>
 
-<div class="wrap-section blue-section">
+<div class="wrap-section white-section">
 	<div class="container">
 		<div class="row">
             <div class="col-lg-8 col-lg-offset-2">

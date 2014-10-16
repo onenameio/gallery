@@ -36,8 +36,7 @@ angular.module('profileviewerApp')
 
 	Person.search = function(query, onSuccess, onError) {
 		/* Cover the empty query case */
-		if (!query) { return; }
-		if (query.length === 0) {
+		if (!query) {
 			onSuccess({'results': []});
 			return;
 		}

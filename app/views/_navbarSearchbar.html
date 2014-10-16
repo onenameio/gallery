@@ -11,15 +11,15 @@
                             {{ person.profile.name.formatted }}
                         </div>
                         <div class="col-xs-6 details">
-                            <div ng-if="person.profile.twitter.username" class="twitter">
+                            <div ng-if="person.profile.twitter.username && person.profile.twitter.proof.url" class="twitter">
                                 <span class="fa fa-twitter"></span>
                                 <span>{{ person.profile.twitter.username }}</span>
                             </div>
-                            <div ng-if="person.profile.facebook.username" class="facebook">
+                            <div ng-if="person.profile.facebook.username && person.profile.facebook.proof.url" class="facebook">
                                 <span class="fa fa-facebook"></span>
                                 <span>{{ person.profile.facebook.username | formatFacebookUsername }}</span>
                             </div>
-                            <div ng-if="person.profile.github.username" class="github">
+                            <div ng-if="person.profile.github.username && person.profile.github.proof.url" class="github">
                                 <span class="fa fa-github"></span>
                                 <span>{{ person.profile.github.username | formatGithubUsername }}</span>
                             </div>

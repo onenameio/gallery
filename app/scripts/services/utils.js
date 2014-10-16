@@ -2,7 +2,6 @@
 
 /* Services */
 
-/*global sjcl: true */
 angular.module('profileviewerApp')
 .factory('Utils', [function() {
 	var Utils = {};
@@ -48,17 +47,6 @@ angular.module('profileviewerApp')
 		};
 		img.src = coverImageURL;
 	};
-	Utils.sjclEncrypt = function(passphrase, plaintext) {
-		var keySize = 256,
-			params = {mode: 'ccm', ks: keySize, iter: 10000},
-			returnedParams = {};
-
-		var ciphertextData = sjcl.encrypt(
-			passphrase, plaintext, params, returnedParams);
-		
-		return ciphertextData;		
-	};
-
 	return Utils;
 }])
 ;

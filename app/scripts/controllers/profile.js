@@ -9,7 +9,7 @@
  */
 
 angular.module('profileviewerApp')
-.controller('ProfileCtrl', function ($scope, $routeParams, Utils, Person, Samples, $modal) {
+.controller('ProfileCtrl', function ($scope, $routeParams, Utils, Person, $modal) {
   $scope.user = {};
 
   $scope.avatarSize = 200;
@@ -276,16 +276,6 @@ angular.module('profileviewerApp')
       Utils.loadAvatar($scope.user.featuredFriends[j].avatarUrl, 'friend-avatar-' + j, $scope.friendAvatarSize);
     }
   }, function() {
-    if ($routeParams.username === 'ryansheasample') {
-      $scope.user = $scope.processProfile(Samples.user());
-
-      Utils.loadAvatar($scope.user.avatarUrl, 'user-avatar-container', $scope.avatarSize);
-      Utils.loadBackground($scope.user.backgroundUrl, 'profile-bottom');
-      
-      for (var i = 0; i < $scope.user.featuredFriends.length; i++) {
-        Utils.loadAvatar($scope.user.featuredFriends[i].avatarUrl, 'friend-avatar-' + i, $scope.friendAvatarSize);
-      }
-    }
   });
 
   $scope.openPaymentModal = function (size) {

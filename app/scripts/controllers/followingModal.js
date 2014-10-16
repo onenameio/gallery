@@ -12,7 +12,6 @@ angular.module('profileviewerApp')
 
 	$scope.followees = followees;
 
-	//Utils.positionAvatars('followees-modal-avatar', 100);
 	for (var i = 0; i < followees.length; i++) {
      	Utils.loadAvatar(followees[i].avatarUrl, 'followees-avatar-' + i, 100);
     }

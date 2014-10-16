@@ -16,10 +16,16 @@ angular.module('profileviewerApp')
 		Person.search(query, function(resp) {
 			var people = [];
 			if (resp.results) {
+				var tripleVerifiedProfiles = [];
+				var doubleVerifiedProfiles = [];
+				var verifiedProfiles = [];
+				var unverifiedProfiles = [];
+				var unfilledProfiles = [];
+
 				resp.results.map(function(item) {
 					var hasIdentifier = false,
 						hasName = false,
-						hasVerification = false;
+						numVerifications = 0;
 					if (hasProp(item, 'profile', 'twitter', 'username') ||
 						hasProp(item, 'profile', 'github', 'username') ||
 						hasProp(item, 'profile', 'facebook', 'username')) {
@@ -28,18 +34,34 @@ angular.module('profileviewerApp')
 					if ($scope.website) {
 						hasIdentifier = true;
 					}
-					if (hasProp(item, 'profile', 'twitter', 'proof', 'url') ||
-						hasProp(item, 'profile', 'github', 'proof', 'url') ||
-						hasProp(item, 'profile', 'facebook', 'proof', 'url')) {
-						hasVerification = true;
+					if (hasProp(item, 'profile', 'twitter', 'proof', 'url')) {
+						numVerifications += 1;
+					}
+					if (hasProp(item, 'profile', 'github', 'proof', 'url')) {
+						numVerifications += 1;
+					}
+					if (hasProp(item, 'profile', 'facebook', 'proof', 'url')) {
+						numVerifications += 1;
 					}
 					if (hasProp(item, 'profile', 'name', 'formatted')) {
 						hasName = true;
 					}
-					if (item.username && hasName && hasIdentifier) {
-						people.push(item);
+
+					if (item.username) {
+						if (numVerifications > 2) {
+							tripleVerifiedProfiles.push(item);
+						} else if (numVerifications === 2) {
+							doubleVerifiedProfiles.push(item);
+						} else if (numVerifications === 1) {
+							verifiedProfiles.push(item);
+						} else if (hasIdentifier && hasName) {
+							unverifiedProfiles.push(item);
+						} else {
+							unfilledProfiles.push(item);
+						}
 					}
 				});
+				people = tripleVerifiedProfiles.concat(doubleVerifiedProfiles, verifiedProfiles, unverifiedProfiles, unfilledProfiles);
 			}
 			$scope.people = people;
 		}, function(error) {

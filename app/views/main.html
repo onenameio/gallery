@@ -16,13 +16,13 @@
               <h1>Real Users on Openname</h1>
             </div>
                 
-            <div class="table">
+            <div class="table" style="max-width: 700px;">
                 <ul class="horizontal-list centered"> 
-                  <li class="friend-item horizontal-friend-item" ng-repeat="friend in featuredFriends">
-                    <a href="/{{ friend.username }}">
+                  <li class="friend-item horizontal-friend-item" ng-repeat="user in featuredUsers">
+                    <a href="/{{ user.username }}">
                       <div class="avatar-container square-container-100" id="friend-avatar-{{ $index }}">
                         <div class="username-section">
-                          <div class="username">{{ friend.username }}</div>
+                          <h5 class="username">{{ user.username }}</h5>
                         </div>
                       </div>
                     </a>
