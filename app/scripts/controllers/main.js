@@ -12,10 +12,10 @@ angular.module('profileviewerApp')
 
     $scope.featuredUsers = [
       { username: 'gavin', avatarUrl: 'https://s3.amazonaws.com/kd4/gavin' },
-      { username: 'peter', avatarUrl: 'https://s3.amazonaws.com/kd4/peter' },
-      { username: 'andreacastillo', avatarUrl: 'https://pbs.twimg.com/profile_images/415589178836262913/1eHaxr0j.jpeg' },
       { username: 'jespow', avatarUrl: 'https://s3.amazonaws.com/kd4/jespow' },
       { username: 'albertwenger', avatarUrl: 'https://pbs.twimg.com/profile_images/1773890030/aew_artistic_bigger.gif' },
+      { username: 'andreacastillo', avatarUrl: 'https://pbs.twimg.com/profile_images/415589178836262913/1eHaxr0j.jpeg' },
+      { username: 'peter', avatarUrl: 'https://s3.amazonaws.com/kd4/peter' },
       { username: 'arianna', avatarUrl: 'https://s3.amazonaws.com/97p/ariannas-profile.jpg' },
       { username: 'will', avatarUrl: 'https://s3.amazonaws.com/kd4/will' },
       { username: 'fredwilson', avatarUrl: 'https://s3.amazonaws.com/65m/fredwilson-avatar.jpg' },
