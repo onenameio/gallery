@@ -1,2 +1,2 @@
-profileviewer
+openname profile viewer
 =============
