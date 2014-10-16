@@ -12,10 +12,6 @@
 angular.module('profileviewerApp')
 .controller('ContactModalCtrl', function ($scope, $modal, $modalInstance, contactMethods, index, $location) {
 
-	$scope.contactMethods = contactMethods;
-
-	$scope.codes = {};
-
 	$scope.selectMethod = function(index) {
 		$scope.index = index;
 		$scope.copyButtonText = 'Click to Copy';
@@ -23,15 +19,6 @@ angular.module('profileviewerApp')
 			$scope.identifier = $scope.contactMethods[$scope.index].identifier;
 		}
 	};
-
-	var urlParams = $location.search();
-	if ('code' in urlParams) {
-		var code = urlParams.code.split('-').join(' ');
-		$scope.attemptDecryption(code);
-		$scope.selectMethod(index);
-	} else {
-		$scope.selectMethod(index);
-	}
 
 	$scope.attemptDecryption = function(code) {
 		for (var i in contactMethods) {
@@ -67,5 +54,18 @@ angular.module('profileviewerApp')
 	$scope.decryptIdentifier = function() {
 		$scope.attemptDecryption($scope.codes.passphrase);
 	};
+
+	$scope.contactMethods = contactMethods;
+
+	$scope.codes = {};
+
+	var urlParams = $location.search();
+	if ('code' in urlParams) {
+		var code = urlParams.code.split('-').join(' ');
+		$scope.attemptDecryption(code);
+		$scope.selectMethod(index);
+	} else {
+		$scope.selectMethod(index);
+	}
 
 });
