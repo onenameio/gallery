@@ -2,7 +2,8 @@
   "name": "profileviewer",
   "version": "0.0.0",
   "dependencies": {
-    "express": "~4.9.5"
+    "express": "~4.9.5",
+    "request": "~2.47.0"
   },
   "devDependencies": {
     "grunt": "^0.4.1",
