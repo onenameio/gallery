@@ -18,10 +18,13 @@ angular
     'ngClipboard',
     'monospaced.qrcode'
   ])
-  .config(function ($compileProvider, $locationProvider, $routeProvider) {
+  .config(function ($compileProvider, $locationProvider, $routeProvider, $httpProvider) {
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|file|tel|skype|mailto|callto|bitmsg|xmpp|bitcoin|namecoin|litecoin|dogecoin):/);
 
     $locationProvider.html5Mode(true).hashPrefix('!');
+
+    $httpProvider.defaults.useXDomain = true;
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
     $routeProvider
       .when('/', {

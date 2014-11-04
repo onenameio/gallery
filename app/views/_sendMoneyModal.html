@@ -12,6 +12,7 @@
 		<div class="btn-group">
   			<button type="button" class="btn btn-default" ng-repeat="payment in payments | limitTo:5 track by $index" ng-click="selectMethod($index)" ng-class="{active:index == $index}">
   				{{ payment.type }}
+  				<span ng-if="payment.method && payment.method == 'stealth'">{{ payment.method }}</span>
   			</button>
 		</div>
 	</div>
@@ -28,7 +29,7 @@
 	    <div>
 		    <div ng-show="qrcodeShown">
 		        <a href="{{ paymentType }}:{{ address }}" class="bitcoin-address-qrcode-large">
-		            <qrcode version="3" error-correction-level="M" size="200" data="{{ address }}"></qrcode>
+		            <qrcode version="7" error-correction-level="M" size="250" data="{{ address }}"></qrcode>
 		        </a>
 	        </div>
 	    </div>
@@ -46,7 +47,7 @@
 		</p>
 		<p>
 			<a href="{{ paymentType }}:{{ address }}" class="bitcoin-address-qrcode-large">
-   			<qrcode version="3" error-correction-level="M" size="175" data="{{ address }}"></qrcode>
+   			<qrcode version="7" error-correction-level="M" size="200" data="{{ address }}"></qrcode>
 		</a>
 		</p>
 		<p>

@@ -275,7 +275,8 @@ angular.module('profileviewerApp')
     for (var j = 0; j < $scope.user.featuredFriends.length; j++) {
       Utils.loadAvatar($scope.user.featuredFriends[j].avatarUrl, 'friend-avatar-' + j, $scope.friendAvatarSize);
     }
-  }, function() {
+  }, function(data) {
+    console.log(data);
   });
 
   $scope.openPaymentModal = function (size) {
