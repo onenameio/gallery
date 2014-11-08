@@ -6,7 +6,8 @@ angular.module('profileviewerApp')
 .factory('Person', ['$http', 'Utils', function($http, Utils) {
 	var Person = {};
 	var hasProp = Utils.hasProp;
-	var baseUrl = ''; // var baseUrl = 'http://localhost:3000';
+	var baseUrl = '';
+	//var baseUrl = 'http://localhost:3000';
 
 	Person.findByUsername = function(username, onSuccess, onError) {
 		var url = baseUrl + '/api/users/' + username;

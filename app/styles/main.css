@@ -52,14 +52,14 @@ p.super, ol.super, ul.super {
 
 /* Links */
 a {
-  color: blue;
+  color: #428bca;
 }
 
 a:hover,
 a:focus {
   text-decoration: none;
   outline: 0;
-  color: blue;
+  color: #428bca;
 }
 
 /* Bootstrap Modifications */

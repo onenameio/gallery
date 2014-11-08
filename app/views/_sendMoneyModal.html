@@ -26,6 +26,9 @@
 	        <a class="btn btn-primary btn-fixed-width open-wallet-button" href="{{ payments[index].type }}:{{ address }}">Open {{ payments[index].type | capitalize }} Wallet</a>
 		    <button class="btn btn-default btn-fixed-width show-qrcode-button" ng-click="toggleQrcode()">Show QR Code</button>
 		</div>
+		<!--<div class="md-push" ng-if="payments[index].type === 'bitcoin' && payments[index].method !== 'stealth'">
+			<a href="https://blockchain.info/address/{{ address }}" target="_blank">transaction history</a>
+		</div>-->
 	    <div>
 		    <div ng-show="qrcodeShown">
 		        <a href="{{ paymentType }}:{{ address }}" class="bitcoin-address-qrcode-large">

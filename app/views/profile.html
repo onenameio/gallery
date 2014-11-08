@@ -1,5 +1,5 @@
 
-<div class="profile-header">
+<div class="profile-header" ng-if="profile">
 <div class="container-fluid">
   <div class="row">
 
@@ -121,7 +121,7 @@
 </div>
 </div>
 
-<div id="profile-bottom" class="profile-bottom container-fluid">
+<div id="profile-bottom" class="profile-bottom container-fluid" ng-if="profile">
   
   <div class="row accounts">
 
@@ -156,4 +156,15 @@
     </div>
   </div>
 
+</div>
+
+<div ng-if="!profile" class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="centered">
+        <h3>Oh no! That user doesn't seem to exist.</h3>
+        <a href="/" class="btn btn-default">home</a> 
+      </div>
+    </div>
+  </div>
 </div>
