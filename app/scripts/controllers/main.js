@@ -8,7 +8,7 @@
  * Controller of the profileviewerApp
  */
 angular.module('profileviewerApp')
-  .controller('MainCtrl', function ($scope, Person, Utils) {
+  .controller('MainCtrl', function ($scope, Person, Utils, $modal) {
 
     $scope.featuredUsers = [
       { username: 'gavin', avatarUrl: 'https://s3.amazonaws.com/kd4/gavin' },
@@ -35,4 +35,13 @@ angular.module('profileviewerApp')
       Utils.loadAvatar($scope.featuredUsers[j].avatarUrl, 'friend-avatar-' + j, 100);
     }
 
-  });
+    $scope.openSignupModal = function () {
+      var modalInstance = $modal.open({
+        templateUrl: '/views/_signupModal.html',
+      controller: 'SignupModalCtrl'
+      });
+      return modalInstance;
+    };
+
+  })
+;
