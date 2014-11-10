@@ -7,7 +7,9 @@ angular.module('profileviewerApp')
 	var Person = {};
 	var hasProp = Utils.hasProp;
 	var baseUrl = '';
-	//var baseUrl = 'http://localhost:3000';
+	if (window.location.href.indexOf('localhost') > -1) {
+		baseUrl = 'http://localhost:3000';
+	} 
 
 	Person.findByUsername = function(username, onSuccess, onError) {
 		var url = baseUrl + '/api/users/' + username;
@@ -15,26 +17,32 @@ angular.module('profileviewerApp')
 			.success(function(data) {
 				data = data.profile;
 
-				var graphUrl = null;
-				if (hasProp(data, 'graph', 'url')) {
-					graphUrl = data.graph.url;
-				} else if (hasProp(data, 'network', 'url')) {
-					graphUrl = data.network.url;
+				if (data) {
+
+					var graphUrl = null;
+					if (hasProp(data, 'graph', 'url')) {
+						graphUrl = data.graph.url;
+					} else if (hasProp(data, 'network', 'url')) {
+						graphUrl = data.network.url;
+					}
+					if (graphUrl) {
+			  			$http({method: 'GET', url: graphUrl})
+							.success(function(graphData) {
+								data.graph = graphData;
+								onSuccess(data);
+							})
+							.error(onError)
+						;
+			  		} else {
+			  			data.graph = {};
+			  			onSuccess(data);
+			  		}
+				} else {
+					onError();
 				}
-				if (graphUrl) {
-		  			$http({method: 'GET', url: graphUrl})
-						.success(function(graphData) {
-							data.graph = graphData;
-							onSuccess(data);
-						})
-						.error(function(data) { console.log(data); })
-					;
-		  		} else {
-		  			data.graph = {};
-		  			onSuccess(data);
-		  		}
+
 			})
-			.error(function(data) { onError(data); })
+			.error(onError)
 		;
 	};
 

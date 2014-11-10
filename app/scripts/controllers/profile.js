@@ -10,7 +10,7 @@
 
 angular.module('profileviewerApp')
 .controller('ProfileCtrl', function ($scope, $routeParams, Utils, Person, $modal) {
-  $scope.user = {};
+  $scope.user = null;
 
   $scope.avatarSize = 200;
   $scope.friendAvatarSize = 100;
@@ -276,7 +276,7 @@ angular.module('profileviewerApp')
       Utils.loadAvatar($scope.user.featuredFriends[j].avatarUrl, 'friend-avatar-' + j, $scope.friendAvatarSize);
     }
   }, function(data) {
-    console.log(data);
+    $scope.noUser = true;
   });
 
   $scope.openPaymentModal = function (size) {
