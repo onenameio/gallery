@@ -1,4 +1,5 @@
-openname profile viewer
+openname directory
 =============
 
-Live on https://openname.org/
+Hosted instances:
++ https://openname.org
