@@ -14,7 +14,6 @@
     "angular-route": "1.2.16",
     "angular-bootstrap": "0.11.2",
     "zeroclipboard": "2.1.6",
-    "qrcode-generator": "0.0.0",
     "ng-clip": "0.2.4",
     "angular-qrcode": "5.0.2",
     "sjcl": "1.0.0"
