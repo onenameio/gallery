@@ -16,7 +16,7 @@ var crossSiteHeaders = {
 app.use(express.static(__dirname + '/dist'));
 
 app.get('/api/users/:username', function(req, res) {
-    var url = 'http://api.onename.co/v1/users/' + req.param('username') + '?app-id=' + appId + '&app-secret=' + appSecret;
+    var url = 'https://api.onename.com/v1/users/' + req.param('username') + '?app-id=' + appId + '&app-secret=' + appSecret;
 
     res.writeHead(200, crossSiteHeaders);
     request.get(url, function (error, response, body) {
@@ -26,7 +26,7 @@ app.get('/api/users/:username', function(req, res) {
 });
 
 app.get('/api/search/:query', function(req, res) {
-    var url = 'http://api.onename.co/v1/search?query=' + req.param('query') + '&app-id=' + appId + '&app-secret=' + appSecret;
+    var url = 'https://api.onename.com/v1/search?query=' + req.param('query') + '&app-id=' + appId + '&app-secret=' + appSecret;
 
     res.writeHead(200, crossSiteHeaders);
     request(url, function (error, response, body) {
