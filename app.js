@@ -3,8 +3,8 @@ var port = process.env.PORT || 3000;
 var app = express();
 var request = require('request');
 
-var appId = '7dc441d3808eb16c0a5555cbb43a7d50';
-var appSecret = 'aa440fb370656439c055ce0e4083ffdf';
+var appId = 'c9045112f02e9ea859f7928590d6c98f';
+var appSecret = '8d78b4fef4dd4e43663b1ef42ca81603d293c8ba90f33e7caadbbdec9ce374b7';
 
 var crossSiteHeaders = {
     'Content-Type': 'application/json',
