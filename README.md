@@ -1,5 +1,6 @@
-openname directory
-=============
+# openname directory
+
+[![Slack](http://slack.blockstack.org/badge.svg)](http://slack.blockstack.org/)
 
 Hosted instances:
 + https://openname.org
